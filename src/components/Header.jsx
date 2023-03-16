@@ -103,7 +103,7 @@ const Header = () => {
             <li className="w-full text-center">
               <NavLink
                 onClick={handleMenu}
-                className="font-bold  py-2 block w-full hover:text-[var(--color-50)]"
+                className="font-bold  py-4 block w-full hover:text-[var(--color-50)]"
                 to="/"
               >
                 Home
@@ -112,16 +112,16 @@ const Header = () => {
             <li className=" w-full  text-center">
               <NavLink
                 onClick={handleMenu}
-                className="font-bold py-2  block w-full hover:text-[var(--color-50)]"
-                to="shop"
+                className="font-bold py-4  block w-full hover:text-[var(--color-50)]"
+                to="about"
               >
-                Shop
+                About
               </NavLink>
             </li>
             <li className=" w-full  text-center">
               <NavLink
                 onClick={handleMenu}
-                className="font-bold  py-2 block w-full hover:text-[var(--color-50)]"
+                className="font-bold  py-4 block w-full hover:text-[var(--color-50)]"
                 to="faq"
               >
                 FAQ
@@ -130,7 +130,7 @@ const Header = () => {
             <li className=" w-full  text-center">
               <NavLink
                 onClick={handleMenu}
-                className="font-bold py-2  block w-full hover:text-[var(--color-50)]"
+                className="font-bold py-4  block w-full hover:text-[var(--color-50)]"
                 to="blog"
               >
                 Blog
@@ -139,7 +139,7 @@ const Header = () => {
             <li className=" w-full  text-center">
               <NavLink
                 onClick={handleMenu}
-                className="font-bold py-2  block w-full hover:text-[var(--color-50)]"
+                className="font-bold py-4  block w-full hover:text-[var(--color-50)]"
                 to="contact"
               >
                 Contact
@@ -160,9 +160,9 @@ const Header = () => {
             <li>
               <NavLink
                 className="font-bold hover:text-[var(--color-50)]"
-                to="shop"
+                to="about"
               >
-                Shop
+                About
               </NavLink>
             </li>
             <li>

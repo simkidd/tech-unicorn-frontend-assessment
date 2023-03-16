@@ -4,6 +4,7 @@ import { MdArrowForwardIos } from "react-icons/md";
 import ProductCard from "../components/ProductCard";
 import NewArrival from "../components/NewArrival";
 import HeroSlider from "../components/HeroSlider";
+import {Link} from 'react-router-dom';
 
 const Home = () => {
   return (
@@ -14,10 +15,10 @@ const Home = () => {
           <h2 className="text-[48px] font-[700]">Sort Out Your Spring Look</h2>
           <p className="text-[16px] py-6">We will help to develop every smallest thing into a big one for your company</p>
           <div >
-          <button className="text-[16px] bg-[var(--color-50)] text-white rounded-[5px] flex items-center justify-between py-3 px-5 mb-[3rem] cursor-pointer">
+          <Link to='shop' className="text-[16px] bg-[var(--color-50)] w-fit text-white rounded-[5px] flex items-center justify-between py-3 px-5 mb-[3rem] cursor-pointer">
               Shop
               <MdArrowForwardIos className="ml-2 text-white" />
-            </button>
+            </Link>
 
           </div>
         </div>
