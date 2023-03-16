@@ -9,13 +9,13 @@ const Footer = () => {
   return (
     <>
       <div className="footer bg-[var(--color-50)] w-full text-white">
-        <div className='container mx-auto w-full px-[2rem] py-[6rem] flex justify-between '>
-          <div className='f-left flex flex-col justify-between w-[35%]'>
+        <div className='md:container mx-auto w-full px-[1.5rem] md:py-[6rem] pt-12 pb-4 md:flex justify-between grid gap-10'>
+          <div className='f-left flex flex-col justify-between md:w-[35%]'>
           <div>
             <img src={Logo} alt="" className='w-[180px] mb-4' />
             <p className='text-[14px]'>Our Studio is a digital agency UI/UX Design and website Development located in Ohio United States of America</p>
           </div>
-          <p>Copyright Tanah Air Studio</p>
+          <p className='hidden md:block'>Copyright Tanah Air Studio</p>
 
           </div>
           <div className='flex justify-between gap-[3rem] '>
@@ -38,6 +38,8 @@ const Footer = () => {
           </div>
 
           </div>
+
+          <p className='md:hidden'>Copyright Tanah Air Studio</p>
         </div>
       </div>
     </>
