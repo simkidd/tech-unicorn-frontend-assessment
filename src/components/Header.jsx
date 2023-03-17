@@ -96,7 +96,7 @@ const Header = () => {
           <ul
             className={
               openMenu
-                ? "flex flex-col top-9 absolute bg-white left-0 w-full p-0  transition-[0.3s ease-in-out] shadow-lg py-4 rounded-b-[8px]"
+                ? "flex flex-col top-9 absolute bg-white left-0 w-full p-0 duration-300 shadow-lg py-4 rounded-b-[8px]"
                 : "hidden"
             }
           >
