@@ -2,7 +2,7 @@ import React from "react";
 import Testimonials from "../components/Testimonials";
 import { MdArrowForwardIos } from "react-icons/md";
 // import ProductCard from "../components/ProductCard";
-import NewArrival from "../components/NewArrival";
+// import NewArrival from "../components/NewArrival";
 import HeroSlider from "../components/HeroSlider";
 import {Link} from 'react-router-dom';
 
@@ -28,7 +28,7 @@ const Home = () => {
         </div>
       </section>
       <section>
-        <NewArrival />
+        {/* <NewArrival /> */}
       </section>
       <section id='discount'>
         <div className="md:container w-full mx-auto px-[2rem] text-white">
