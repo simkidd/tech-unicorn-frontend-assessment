@@ -1,7 +1,7 @@
 import React from "react";
 import Testimonials from "../components/Testimonials";
 import { MdArrowForwardIos } from "react-icons/md";
-import ProductCard from "../components/ProductCard";
+// import ProductCard from "../components/ProductCard";
 import NewArrival from "../components/NewArrival";
 import HeroSlider from "../components/HeroSlider";
 import {Link} from 'react-router-dom';
@@ -48,10 +48,10 @@ const Home = () => {
           <h2 className="text-[48px] font-[700] py-8">Best Seller</h2>
           </div>
             <div className="grid md:grid-cols-4 grid-cols-2 gap-4">
+              {/* <ProductCard />
               <ProductCard />
               <ProductCard />
-              <ProductCard />
-              <ProductCard />
+              <ProductCard /> */}
             </div>
         </div>
       </section>
