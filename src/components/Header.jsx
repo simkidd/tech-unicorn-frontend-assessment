@@ -174,7 +174,7 @@ const Header = () => {
               </NavLink>
             </li>
             <li>
-              <NavLink className="font-bold hover:text-black" to="blog">
+              <NavLink className="font-bold hover:text-[var(--color-50)]" to="blog">
                 Blog
               </NavLink>
             </li>

@@ -5,10 +5,12 @@ import { MdArrowForwardIos } from "react-icons/md";
 // import NewArrival from "../components/NewArrival";
 import HeroSlider from "../components/HeroSlider";
 import {Link} from 'react-router-dom';
+import Meta from '../components/Meta'
 
 const Home = () => {
   return (
     <div className="w-full bg-white">
+    <Meta title={"E-commerce App"} />
       <section className="hero">
         <div className="grid grid-cols-[40%_60%] w-full">
         <div className='flex flex-col p-[4rem]'>

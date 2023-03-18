@@ -1,16 +1,95 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import Breadcrumb from "../components/Breadcrumb";
 import { BiFilterAlt } from "react-icons/bi";
 import { BsGrid } from "react-icons/bs";
 import { FaList } from "react-icons/fa";
-import { FiSearch } from "react-icons/fi";
 import Products from "../components/Products";
+import Meta from "../components/Meta";
+import Search from "../components/Search";
+import { MdArrowForwardIos } from "react-icons/md";
 
 const Shop = () => {
-  const [grid, setGrid] = useState(4)
- 
+  const [products, setProducts] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState([]);
+  const [sortType, setSortType] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const [grid, setGrid] = useState(4);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      setLoading(true);
+      try {
+        const res = await axios.get("https://fakestoreapi.com/products");
+        setProducts(res.data);
+        setFilteredProducts(res.data);
+        setLoading(false);
+      } catch (err) {
+        console.log(err);
+        setError("Error fetching data!");
+        setLoading(false);
+      }
+    };
+    fetchProducts();
+  }, []);
+
+  const handleFilter = (category, priceRange) => {
+    const filteredByCategory = products.filter(
+      (product) => product.category === category
+    );
+    const filteredByPriceRange = filteredByCategory.filter(
+      (product) =>
+        product.price >= priceRange[0] && product.price <= priceRange[1]
+    );
+    setFilteredProducts(filteredByPriceRange);
+  };
+
+  const handleSort = () => {
+    setSortType(sortType);
+    let sortedProducts = [];
+    switch (sortType) {
+      case "alpha-asc":
+        sortedProducts = [...products].sort((a, b) =>
+          a.title.localeCompare(b.title)
+        );
+        break;
+      case "alpha-desc":
+        sortedProducts = [...products].sort((a, b) =>
+          b.title.localeCompare(a.title)
+        );
+        break;
+      case "price-low-to-high":
+        sortedProducts = [...products].sort((a, b) => a.price - b.price);
+        break;
+      case "price-high-to-low":
+        sortedProducts = [...products].sort((a, b) => b.price - a.price);
+        break;
+      case "rating-high-to-low":
+        sortedProducts = [...products].sort(
+          (a, b) => b.rating.rate - a.rating.rate
+        );
+        break;
+      default:
+        sortedProducts = products;
+    }
+    setFilteredProducts(sortedProducts);
+  };
+
+  const handleSearch=(searchQuery)=>{
+      setSearchQuery(searchQuery)
+      const findProduct = products.filter((product)=> product.title.toLowerCase().includes(searchQuery.toLowerCase()));
+      setFilteredProducts(findProduct);
+  }
+
+  
+
+  
+
   return (
     <div>
+      <Meta title={"Our Shop"} />
       <div>
         {/* title and breadcrumb */}
         <div className="grid grid-cols-[25%_75%] w-full">
@@ -23,45 +102,99 @@ const Shop = () => {
 
         <div className="grid grid-cols-[25%_75%] w-full pt-[8rem] px-[4rem]">
           {/* sidebar */}
-          <div className="">
+          <div className="pr-8">
             <div>
-              <div>
-                <h3>Price</h3> <BiFilterAlt />
+              <div className="pb-8 flex item-center justify-between">
+                <h3 className="font-bold">Price</h3> <BiFilterAlt />
               </div>
             </div>
-            <div>color</div>
-            <div>categories</div>
+            <div className="pb-8">color</div>
+            <div className="pb-8">
+              <h3 className="font-bold pb-1">Category</h3>
+              <p
+                className="cursor-pointer flex items-center justify-between py-1"
+                onClick={()=>setFilteredProducts(Products)}
+              >
+                All Categories
+                <MdArrowForwardIos />
+              </p>
+              <p
+                className="cursor-pointer flex items-center justify-between py-1"
+                onClick={(e) => handleFilter("men's clothing", [0, Infinity])}
+              >
+                Men's Clothing
+                <MdArrowForwardIos />
+              </p>
+              <p
+                className="cursor-pointer flex items-center justify-between py-1"
+                onClick={(e) => handleFilter("women's clothing", [0, Infinity])}
+              >
+                Women
+                <MdArrowForwardIos />
+              </p>
+              <p
+                className="cursor-pointer flex items-center justify-between py-1"
+                onClick={(e) => handleFilter("electronics", [0, Infinity])}
+              >
+                Electronics
+                <MdArrowForwardIos />
+              </p>
+              <p
+                className="cursor-pointer flex items-center justify-between py-1"
+                onClick={(e) => handleFilter("jewelery", [0, Infinity])}
+              >
+                Jewelery
+                <MdArrowForwardIos />
+              </p>
+            </div>
             <div>march discount</div>
           </div>
 
           {/* products list */}
           <div className="w-full flex flex-col">
-            <div className="w-full flex items-center relative ">
-              <input
-                type="text"
-                className="w-full rounded-[4px] p-3 !outline-[var(--color-50)] !border-[#f862385b] border"
-                placeholder="Search products"
-              />
-              <FiSearch size={20} className='absolute right-3 text-[var(--placeholder)]' />
-            </div>
+            <Search handleSearch={handleSearch} searchQuery={searchQuery} />
             <div className="flex justify-between items-center py-8 pb-[4rem]">
               <p>Showing results</p>
               <div className="flex items-center gap-8">
-              <p>Sort by</p>
-              <select name="" className="!border border-black  rounded">
-                <option value="" selected='selected'>Newest</option>
-                <option value="">A-Z</option>
-                <option value="">Z-A</option>
-                <option value="">Price, low to high</option>
-                <option value="">Price, high to low</option>
-                <option value="">Date, old to new</option>
-                <option value="">Date, new to old</option>
-              </select>
-              <FaList onClick={()=>{setGrid(1)}} className='cursor-pointer' size={20} />
-                <BsGrid onClick={()=>{setGrid(3)}} className='cursor-pointer' size={20} />
+                <p>Sort by</p>
+                <select
+                  name=""
+                  className="!border border-black  rounded"
+                  onChange={(e) => handleSort(e.target.value)}
+                >
+                  {/* <option value="" defaultValue>
+                    Newest
+                  </option> */}
+                  <option value="alpha-asc">A-Z</option>
+                  <option value="alpha-desc">Z-A</option>
+                  <option value="price-low-to-high">Price, low to high</option>
+                  <option value="price-high-to-low">Price, high to low</option>
+                  <option value="rating-high-to-low" defaultValue>
+                    Best selling
+                  </option>
+                </select>
+                <FaList
+                  onClick={() => {
+                    setGrid(1);
+                  }}
+                  className="cursor-pointer"
+                  size={20}
+                />
+                <BsGrid
+                  onClick={() => {
+                    setGrid(3);
+                  }}
+                  className="cursor-pointer"
+                  size={20}
+                />
               </div>
             </div>
-            <Products grid={grid} />
+            <Products
+              grid={grid}
+              filteredProducts={filteredProducts}
+              loading={loading}
+              error={error}
+            />
           </div>
         </div>
       </div>
