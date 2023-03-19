@@ -155,19 +155,22 @@ const Shop = () => {
             <Search handleSearch={handleSearch} searchQuery={searchQuery} />
             <div className="flex justify-between items-center py-8 pb-[4rem]">
             {/* filter by category */}
-            <select className='md:hidden' onChange={(e)=>handleFilter(e.target.value)}>
+            <div className='flex items-center gap-1'>
+            <BiFilterAlt size={20} />
+            <select className='md:hidden !border border-[var(--placeholder)]  rounded' onChange={(e)=>handleFilter(e.target.value)}>
               <option value="">All Categories</option>
               <option value="men's clothing">Men's Clothing</option>
               <option value="women's clothing">Women's Clothing</option>
               <option value="electronics">Electronics</option>
               <option value="jewelery">Jewelery</option>
             </select>
+            </div>
             {/* filter by category ends here */}
               <p className='hidden md:block'>Showing results</p>
               <div className="flex items-center gap-8">
                 <p className="hidden md:block">Sort by</p>
                 <select
-                  className="!border border-black  rounded"
+                  className="!border border-[var(--placeholder)]  rounded"
                   onChange={(e) => handleSort(e.target.value)}
                   value={sortType}
                 >
