@@ -54,7 +54,7 @@ const Products = ({ grid, filteredProducts, loading, error }) => {
   };
 
   return (
-    <div className="grid grid-cols-3 justify-center gap-4">
+    <div className="grid md:grid-cols-3 grid-cols-2 justify-center gap-4">
       {loading ? <Loading /> : error ? <ErrorMsg/> : <ShowProducts />}
     </div>
   );

@@ -92,17 +92,17 @@ const Shop = () => {
       <Meta title={"Our Shop"} />
       <div>
         {/* title and breadcrumb */}
-        <div className="grid grid-cols-[25%_75%] w-full">
-          <div className="flex flex-col pl-[4rem]  py-[8rem] gap-3">
+        <div className="grid md:grid-cols-[25%_75%] w-full">
+          <div className="flex flex-col pl-[4rem] md:py-[8rem] py-[2rem] gap-3">
             <Breadcrumb title="Shop" />
             <h2 className="text-[48px] font-[700] ">Shop</h2>
           </div>
-          <div className="border">Image is here.</div>
+          <div className="border ">Image is here.</div>
         </div>
 
-        <div className="grid grid-cols-[25%_75%] w-full pt-[8rem] px-[4rem]">
+        <div className="grid md:grid-cols-[25%_75%] w-full py-[8rem] md:px-[4rem] px-[1rem]">
           {/* sidebar */}
-          <div className="pr-8">
+          <div className="pr-8 hidden md:block">
             <div>
               <div className="pb-8 flex item-center justify-between">
                 <h3 className="font-bold">Price</h3> <BiFilterAlt />
@@ -154,13 +154,22 @@ const Shop = () => {
           <div className="w-full flex flex-col">
             <Search handleSearch={handleSearch} searchQuery={searchQuery} />
             <div className="flex justify-between items-center py-8 pb-[4rem]">
-              <p>Showing results</p>
+            {/* filter by category */}
+            <select className='md:hidden' onChange={(e)=>handleFilter(e.target.value)}>
+              <option value="">All Categories</option>
+              <option value="men's clothing">Men's Clothing</option>
+              <option value="women's clothing">Women's Clothing</option>
+              <option value="electronics">Electronics</option>
+              <option value="jewelery">Jewelery</option>
+            </select>
+            {/* filter by category ends here */}
+              <p className='hidden md:block'>Showing results</p>
               <div className="flex items-center gap-8">
-                <p>Sort by</p>
+                <p className="hidden md:block">Sort by</p>
                 <select
-                  name=""
                   className="!border border-black  rounded"
                   onChange={(e) => handleSort(e.target.value)}
+                  value={sortType}
                 >
                   {/* <option value="" defaultValue>
                     Newest

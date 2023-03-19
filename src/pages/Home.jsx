@@ -12,7 +12,7 @@ const Home = () => {
     <div className="w-full bg-white">
     <Meta title={"E-commerce App"} />
       <section className="hero">
-        <div className="grid grid-cols-[40%_60%] w-full">
+        <div className="grid md:grid-cols-[40%_60%] w-full">
         <div className='flex flex-col p-[4rem]'>
           <h2 className="text-[48px] font-[700]">Sort Out Your Spring Look</h2>
           <p className="text-[16px] py-6">We will help to develop every smallest thing into a big one for your company</p>
@@ -45,9 +45,9 @@ const Home = () => {
         </div>
       </section>
       <section id='best-seller' >
-        <div className="md:container mx-auto px-[2rem] py-[8rem]">
+        <div className="md:container mx-auto md:px-[2rem] px-[1rem] py-[8rem]">
           <div className="w-full">
-          <h2 className="text-[48px] font-[700] py-8">Best Seller</h2>
+          <h2 className="md:text-[48px] text-[38px] font-[700] py-8">Best Seller</h2>
           </div>
             <div className="grid md:grid-cols-4 grid-cols-2 gap-4">
               {/* <ProductCard />
