@@ -1,7 +1,7 @@
 import React from "react";
 import { FiSearch } from "react-icons/fi";
 
-const Search = ({handleSearch, searchQuery}) => {
+const Search = ({searchProducts, searchQuery}) => {
 
   return (
     <>
@@ -11,7 +11,7 @@ const Search = ({handleSearch, searchQuery}) => {
           className="w-full rounded-[4px] p-3 !outline-[var(--color-50)] !border-[#f862385b] border"
           placeholder="Search products"
           value={searchQuery}
-          onChange={handleSearch}
+          onChange={searchProducts}
           
         />
         <FiSearch

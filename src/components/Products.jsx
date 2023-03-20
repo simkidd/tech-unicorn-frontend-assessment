@@ -1,31 +1,7 @@
 import React from "react";
-import ProductCard from "./ProductCard";
+import ProductCard, {ProductListCard} from "./ProductCard";
 
-const Products = ({ grid, filteredProducts, loading, error }) => {
-  // const [data, setData] = useState([])
-  // const [filter, setFilter] = useState(data)
-  // const [loading, setLoading] = useState(false)
-
-  // let componentMounted = true
-
-  // useEffect(() => {
-  //     const getProducts = async()=>{
-  //         setLoading(true);
-  //         const response = await fetch("https://fakestoreapi.com/products");
-  //         if(componentMounted){
-  //             setData(await response.clone().json());
-  //             setFilter(await response.json());
-  //             setLoading(false)
-  //         }
-
-  //         return () => {
-  //             //eslint-disable-next-line
-  //             componentMounted = false;
-  //         }
-  //     }
-
-  //   getProducts();
-  // }, [])
+const Products = ({ viewType, filteredProducts, loading, error }) => {
 
   const Loading = () => {
     return (
@@ -35,28 +11,34 @@ const Products = ({ grid, filteredProducts, loading, error }) => {
     );
   };
 
-  const ErrorMsg =()=>{
+  const ErrorMsg = () => {
     return (
-        <>
-          <h1 className="text-[64px] font-bold text-red-500">{error}</h1>
-        </>
-      );
-  }
+      <>
+        <h1 className="text-[64px] font-bold text-red-500">{error}</h1>
+        <h1 className="text-[64px] font-bold text-red-500">{error}</h1>
+        <h1 className="text-[64px] font-bold text-red-500">{error}</h1>
+        <h1 className="text-[64px] font-bold text-red-500">{error}</h1>
+        <h1 className="text-[64px] font-bold text-red-500">{error}</h1>
+      </>
+    );
+  };
 
   const ShowProducts = () => {
     return (
       <>
         {filteredProducts.map((product) => {
-          return <ProductCard key={product.id} product={product} />;
+          return  <ProductCard key={product.id} product={product} />;
         })}
       </>
     );
   };
 
   return (
-    <div className="grid md:grid-cols-3 grid-cols-2 justify-center gap-4">
-      {loading ? <Loading /> : error ? <ErrorMsg/> : <ShowProducts />}
-    </div>
+    <>
+      <div className={`${viewType === 'grid' ? "grid md:grid-cols-3 grid-cols-2 justify-center gap-4" : "flex flex-col gap-4"}`}>
+        {loading ? <Loading /> : error ? <ErrorMsg /> : <ShowProducts />}
+      </div>
+    </>
   );
 };
 

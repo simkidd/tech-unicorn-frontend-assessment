@@ -16,7 +16,7 @@ const Shop = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const [grid, setGrid] = useState(4);
+  const [viewType, setViewType] = useState("grid")
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -35,18 +35,16 @@ const Shop = () => {
     fetchProducts();
   }, []);
 
-  const handleFilter = (category, priceRange) => {
+  const handleFilter = (category) => {
     const filteredByCategory = products.filter(
       (product) => product.category === category
     );
-    const filteredByPriceRange = filteredByCategory.filter(
-      (product) =>
-        product.price >= priceRange[0] && product.price <= priceRange[1]
-    );
-    setFilteredProducts(filteredByPriceRange);
+    setFilteredProducts(filteredByCategory);
   };
 
-  const handleSort = () => {
+  
+
+  const handleSort = (sortType) => {
     setSortType(sortType);
     let sortedProducts = [];
     switch (sortType) {
@@ -77,13 +75,14 @@ const Shop = () => {
     setFilteredProducts(sortedProducts);
   };
 
-  const handleSearch=(searchQuery)=>{
-      setSearchQuery(searchQuery)
-      const findProduct = products.filter((product)=> product.title.toLowerCase().includes(searchQuery.toLowerCase()));
-      setFilteredProducts(findProduct);
-  }
 
-  
+
+  const searchProducts = (searchQuery) => {
+    const findProducts = products.filter((product) => product.title.toString().toLowerCase().includes(searchQuery.toLowerCase()) || product.description.toString().toLowerCase().includes(searchQuery.toLowerCase()));
+    setSearchQuery({ findProducts, searchQuery });
+
+    setFilteredProducts(findProducts)
+  }
 
   
 
@@ -113,35 +112,35 @@ const Shop = () => {
               <h3 className="font-bold pb-1">Category</h3>
               <p
                 className="cursor-pointer flex items-center justify-between py-1"
-                onClick={()=>setFilteredProducts(Products)}
+                onClick={()=>setFilteredProducts(products)}
               >
                 All Categories
                 <MdArrowForwardIos />
               </p>
               <p
                 className="cursor-pointer flex items-center justify-between py-1"
-                onClick={(e) => handleFilter("men's clothing", [0, Infinity])}
+                onClick={() => handleFilter("men's clothing")}
               >
                 Men's Clothing
                 <MdArrowForwardIos />
               </p>
               <p
                 className="cursor-pointer flex items-center justify-between py-1"
-                onClick={(e) => handleFilter("women's clothing", [0, Infinity])}
+                onClick={() => handleFilter("women's clothing")}
               >
                 Women
                 <MdArrowForwardIos />
               </p>
               <p
                 className="cursor-pointer flex items-center justify-between py-1"
-                onClick={(e) => handleFilter("electronics", [0, Infinity])}
+                onClick={() => handleFilter("electronics")}
               >
                 Electronics
                 <MdArrowForwardIos />
               </p>
               <p
                 className="cursor-pointer flex items-center justify-between py-1"
-                onClick={(e) => handleFilter("jewelery", [0, Infinity])}
+                onClick={() => handleFilter("jewelery")}
               >
                 Jewelery
                 <MdArrowForwardIos />
@@ -152,11 +151,11 @@ const Shop = () => {
 
           {/* products list */}
           <div className="w-full flex flex-col">
-            <Search handleSearch={handleSearch} searchQuery={searchQuery} />
+            <Search searchProducts={searchProducts} searchQuery={searchQuery} />
             <div className="flex justify-between items-center py-8 pb-[4rem]">
             {/* filter by category */}
             <div className='flex items-center gap-1'>
-            <BiFilterAlt size={20} />
+            <BiFilterAlt size={20} className='md:hidden' />
             <select className='md:hidden !border border-[var(--placeholder)]  rounded' onChange={(e)=>handleFilter(e.target.value)}>
               <option value="">All Categories</option>
               <option value="men's clothing">Men's Clothing</option>
@@ -166,7 +165,7 @@ const Shop = () => {
             </select>
             </div>
             {/* filter by category ends here */}
-              <p className='hidden md:block'>Showing results</p>
+              <p className='hidden md:flex items-start'>Showing results</p>
               <div className="flex items-center gap-8">
                 <p className="hidden md:block">Sort by</p>
                 <select
@@ -181,28 +180,24 @@ const Shop = () => {
                   <option value="alpha-desc">Z-A</option>
                   <option value="price-low-to-high">Price, low to high</option>
                   <option value="price-high-to-low">Price, high to low</option>
-                  <option value="rating-high-to-low" defaultValue>
+                  <option value="rating-high-to-low" >
                     Best selling
                   </option>
                 </select>
                 <FaList
-                  onClick={() => {
-                    setGrid(1);
-                  }}
+                  onClick={()=>setViewType("list")}
                   className="cursor-pointer"
                   size={20}
                 />
                 <BsGrid
-                  onClick={() => {
-                    setGrid(3);
-                  }}
+                  onClick={()=>setViewType('grid')}
                   className="cursor-pointer"
                   size={20}
                 />
               </div>
             </div>
             <Products
-              grid={grid}
+              viewType={viewType}
               filteredProducts={filteredProducts}
               loading={loading}
               error={error}
