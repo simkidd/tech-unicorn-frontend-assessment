@@ -8,6 +8,7 @@ import Blog from './pages/Blog';
 import Faq from './pages/Faq';
 import Contact from './pages/Contact';
 import About from './pages/About';
+import SingleProduct from './pages/SingleProduct';
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
           <Route path="faq" element={<Faq />} />
           <Route path="blog" element={<Blog />} />
           <Route path="contact" element={<Contact />} />
+          <Route path="shop/product" element={<SingleProduct />} />
         </Route>
       </Routes>
     </Router>

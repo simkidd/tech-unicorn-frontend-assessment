@@ -66,7 +66,7 @@ const ProductCard = ({ product}) => {
           <span className="absolute top-3 right-3 bg-white rounded-[50%] p-1">
             <AiOutlineHeart size={20} className="text-[var(--color-50)]" />
           </span>
-          <span className="absolute top-[3.6rem] right-[-1.8rem] group-hover:right-3 duration-300">
+          <span className="absolute top-[3.6rem] right-[-1.8rem] group-hover:right-3 duration-300 md:flex hidden">
             <Link className="bg-white rounded-[50%] p-1">
               <MdAddShoppingCart size={20} className="text-[var(--color-50)]" />
             </Link>
@@ -78,7 +78,7 @@ const ProductCard = ({ product}) => {
           </p>
           <Link>
             <h5 className="text-[18px] pb-1 font-bold">
-              {product.title.substring(0, 24) + "..."}
+              {product.title.substring(0, 20) + "..."}
             </h5>
           </Link>
           <span className="w-full flex items-center pb-1">
@@ -93,6 +93,10 @@ const ProductCard = ({ product}) => {
           <p className="text-[18px] font-bold pb-2 text-[var(--color-50)]">
             ${product.price}
           </p>
+          <Link className="bg-[var(--color-50)] md:hidden py-1 px-3 flex items-center justify-center rounded-[5px] text-white pb-1">
+          Add to cart
+            <MdAddShoppingCart size={20} className="pl-2"/>
+          </Link>
         </div>
       </div>
     </>
