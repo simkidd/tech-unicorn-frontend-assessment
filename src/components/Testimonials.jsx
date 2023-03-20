@@ -1,10 +1,12 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper";
+import { Navigation, Autoplay, Pagination } from "swiper";
 import { TestimonialData } from "../data/TestimonialData";
 import styled from "styled-components";
 import "swiper/css";
 import "swiper/css/navigation";
+import "swiper/css/autoplay";
+import "swiper/css/pagination";
 
 const Testimonials = () => {
   return (
@@ -16,10 +18,11 @@ const Testimonials = () => {
             slidesPerView={1}
             slidesPerGroup={1}
             spaceBetween={20}
-            modules={[Navigation]}
+            modules={[Navigation, Autoplay, Pagination]}
             navigation={true}
+            pagination={true}
             loop={true}
-            
+            autoplay={{delay:2500, disableOnInteraction:false}}
             className='w-full'
           >
             {TestimonialData.map((item, i) => {
