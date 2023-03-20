@@ -49,7 +49,7 @@ export default Testimonials;
 
 const Wrapper = styled.div`
     .swiper{
-        padding: 2rem 0 8rem;
+        padding: 3rem 0 6rem;
         width: 60%;
         position: unset ;
         @media screen and (max-width:768px){
@@ -75,5 +75,8 @@ const Wrapper = styled.div`
         font-weight:bold ;
         right:17%;
         
+    }
+    .swiper-pagination-bullet-active{
+      background: var(--color-50);
     }
 `
