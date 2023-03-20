@@ -11,7 +11,7 @@ const Search = ({searchProducts, searchQuery}) => {
           className="w-full rounded-[4px] p-3 !outline-[var(--color-50)] !border-[#f862385b] border"
           placeholder="Search products"
           value={searchQuery}
-          onChange={searchProducts}
+          onChange={(e)=>searchProducts(e.target.value)}
           
         />
         <FiSearch

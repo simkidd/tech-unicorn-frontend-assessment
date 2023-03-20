@@ -7,8 +7,8 @@ import ReactStars from "react-rating-stars-component";
 export const ProductListCard=({product})=>{
   return(
     <>
-      <div className="flex shadow-md items-center gap-4 overflow-hidden rounded-[5px] pb-4">
-        <div className="w-full h-[200px] flex items-center justify-center relative group border-box">
+      <div className="flex shadow-md items-center gap-4 overflow-hidden rounded-[5px]">
+        <div className="w-full h-[200px] flex items-center justify-center relative group box-border">
           <img
             src={product.image}
             className="object-contain w-full h-[180px] group-hover:scale-[0.9] duration-300"
@@ -28,12 +28,12 @@ export const ProductListCard=({product})=>{
             {product.category}
           </p>
           <Link>
-            <h5 className="text-[20px] pb-1">
-              {product.title.substring(0, 20)}...
+            <h5 className="text-[18px] pb-1 font-bold">
+              {product.title.substring(0, 24) + "..."}
             </h5>
           </Link>
           <p className="text-[14px]">{product.description}</p>
-          <span className="w-full flex items-center justify-center pb-1">
+          <span className="w-full flex items-center pb-1">
             <ReactStars
               count={5}
               size={24}
@@ -57,7 +57,7 @@ const ProductCard = ({ product}) => {
   return (
     <>
       <div className="flex flex-col shadow-md items-center overflow-hidden rounded-[5px] ">
-        <div className="w-full h-[230px] flex items-center justify-center relative group">
+        <div className="w-full h-[230px] flex items-center justify-center relative group box-border">
           <img
             src={product.image}
             className="object-contain w-full h-[180px] group-hover:scale-[0.9] duration-300"

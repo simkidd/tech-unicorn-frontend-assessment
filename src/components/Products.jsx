@@ -1,5 +1,6 @@
 import React from "react";
-import ProductCard, {ProductListCard} from "./ProductCard";
+import ProductCard from "./ProductCard";
+// import ProductCard, {ProductListCard} from "./ProductCard";
 
 const Products = ({ viewType, filteredProducts, loading, error }) => {
 
