@@ -54,6 +54,7 @@ const Wrapper = styled.div`
         position: unset ;
         @media screen and (max-width:768px){
           width:90%;
+          padding: 3rem 0 4rem;
 
           .swiper-button-prev, .swiper-button-next{
             display:none;
