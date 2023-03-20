@@ -1,6 +1,5 @@
 import React from "react";
-import ProductCard from "./ProductCard";
-// import ProductCard, {ProductListCard} from "./ProductCard";
+import ProductCard, {ProductListCard} from "./ProductCard";
 
 const Products = ({ viewType, filteredProducts, loading, error }) => {
 
@@ -24,7 +23,7 @@ const Products = ({ viewType, filteredProducts, loading, error }) => {
     );
   };
 
-  const ShowProducts = () => {
+  const ShowGridProducts = () => {
     return (
       <>
         {filteredProducts.map((product) => {
@@ -33,11 +32,34 @@ const Products = ({ viewType, filteredProducts, loading, error }) => {
       </>
     );
   };
+  const GridComponent = () => {
+    return (
+      <>
+        {loading ? <Loading /> : error ? <ErrorMsg /> : <ShowGridProducts /> }
+      </>
+    );
+  };
+  const ShowListProducts = () => {
+    return (
+      <>
+        {filteredProducts.map((product) => {
+          return  <ProductListCard key={product.id} product={product} />;
+        })}
+      </>
+    );
+  };
+  const ListComponent = () => {
+    return (
+      <>
+        {loading ? <Loading /> : error ? <ErrorMsg /> : <ShowListProducts /> }
+      </>
+    );
+  };
 
   return (
     <>
       <div className={`${viewType === 'grid' ? "grid md:grid-cols-3 grid-cols-2 justify-center gap-4" : "flex flex-col gap-4"}`}>
-        {loading ? <Loading /> : error ? <ErrorMsg /> : <ShowProducts />}
+        {viewType === 'grid' ? <GridComponent /> : <ListComponent/>}
       </div>
     </>
   );

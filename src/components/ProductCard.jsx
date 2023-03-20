@@ -7,8 +7,8 @@ import ReactStars from "react-rating-stars-component";
 export const ProductListCard=({product})=>{
   return(
     <>
-      <div className="flex shadow-md items-center gap-4 overflow-hidden rounded-[5px]">
-        <div className="w-full h-[200px] flex items-center justify-center relative group box-border">
+      <div className="grid grid-cols-[35%_65%] shadow-md items-center gap-4 overflow-hidden rounded-[5px] h-[200px]">
+        <div className="w-full h-full flex items-center justify-center relative group box-border overflow-hidden">
           <img
             src={product.image}
             className="object-contain w-full h-[180px] group-hover:scale-[0.9] duration-300"
@@ -23,11 +23,11 @@ export const ProductListCard=({product})=>{
             </Link>
           </span>
         </div>
-        <div className="text-center">
+        <div className="flex flex-col w-full">
           <p className="text-[14px] text-[var(--color-50)] py-1">
             {product.category}
           </p>
-          <Link>
+          <Link className="hover:underline">
             <h5 className="text-[18px] pb-1 font-bold">
               {product.title.substring(0, 24) + "..."}
             </h5>
@@ -57,7 +57,7 @@ const ProductCard = ({ product}) => {
   return (
     <>
       <div className="flex flex-col shadow-md items-center overflow-hidden rounded-[5px] ">
-        <div className="w-full h-[230px] flex items-center justify-center relative group box-border">
+        <div className="w-full h-[230px] flex items-center justify-center relative group box-border overflow-hidden">
           <img
             src={product.image}
             className="object-contain w-full h-[180px] group-hover:scale-[0.9] duration-300"
@@ -76,7 +76,7 @@ const ProductCard = ({ product}) => {
           <p className="text-[14px] text-[var(--color-50)] py-1">
             {product.category}
           </p>
-          <Link>
+          <Link className="hover:underline">
             <h5 className="text-[18px] pb-1 font-bold">
               {product.title.substring(0, 20) + "..."}
             </h5>
