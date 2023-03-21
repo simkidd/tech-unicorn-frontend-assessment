@@ -96,7 +96,7 @@ const Shop = () => {
             <Breadcrumb title="Shop" />
             <h2 className="text-[48px] font-[700] ">Shop</h2>
           </div>
-          <div className="border ">Image is here.</div>
+          <div className="border bg-[var(--placeholder)]">Image is here.</div>
         </div>
 
         <div className="grid md:grid-cols-[25%_75%] w-full py-[8rem] md:px-[4rem] px-[1rem]">
