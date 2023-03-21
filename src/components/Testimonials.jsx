@@ -20,7 +20,7 @@ const Testimonials = () => {
             spaceBetween={20}
             modules={[Navigation, Autoplay, Pagination]}
             navigation={true}
-            pagination={true}
+            pagination={{dynamicBullets:true}}
             loop={true}
             autoplay={{delay:2500, disableOnInteraction:false}}
             className='w-full'

@@ -50,14 +50,14 @@ const SingleProduct = () => {
               </div>
             </div>
             <div className="pl-8">
-              <div>
+              <div className="flex flex-col gap-4">
                 <h5 className="font-[700] text-[40px]">{product.title}</h5>
-                <div>
-                  <p>
+                <div className="flex flex-col gap-2">
+                  <p className="flex items-center gap-4">
                     <span className="font-bold text-[14px]">Availability:</span>
                     48 in stocks
                   </p>
-                  <p className="flex items-center">
+                  <p className="flex items-center gap-4">
                     <ReactStars
                       count={5}
                       size={24}
@@ -71,12 +71,12 @@ const SingleProduct = () => {
                     ${product.price}
                     <span></span>
                   </p>
-                  <p className="flex items-center text-[14px]">
-                    <span className="font-bold">Category</span> :
+                  <p className="flex items-center text-[14px] gap-8">
+                    <span className="font-bold">Category:</span> 
                     {product.category}
                   </p>
                 </div>
-                <div className="flex">
+                <div className="flex items-center gap-12">
                   <select className="!border border-[var(--placeholder)]  rounded">
                     <option>Select Size</option>
                     <option>M</option>
