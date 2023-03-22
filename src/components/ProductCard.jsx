@@ -2,7 +2,7 @@ import React from "react";
 import { AiOutlineHeart } from "react-icons/ai";
 import { MdAddShoppingCart } from "react-icons/md";
 import { Link } from "react-router-dom";
-import ReactStars from "react-rating-stars-component";
+import Rating from "@mui/material/Rating";
 
 export const ProductListCard = ({ product }) => {
   return (
@@ -27,10 +27,7 @@ export const ProductListCard = ({ product }) => {
           <p className="text-[14px] text-[var(--color-50)] py-1">
             {product.category}
           </p>
-          <Link
-            to={`/product/${product.id}`}
-            className="hover:underline"
-          >
+          <Link to={`/product/${product.id}`} className="hover:underline">
             <h5 className="text-[18px] pb-1 font-bold">
               {product.title.substring(0, 30) + "..."}
             </h5>
@@ -39,13 +36,7 @@ export const ProductListCard = ({ product }) => {
             {product.description.substring(0, 80) + "..."}
           </p>
           <span className="w-full flex items-center pb-1">
-            <ReactStars
-              count={5}
-              size={24}
-              value={product.rating.rate}
-              edit={false}
-              activeColor="#ffd700"
-            />
+            <Rating value={product.rating.rate} readOnly size="small" />
           </span>
           <p className="text-[18px] font-bold pb-2 text-[var(--color-50)]">
             ${product.price}
@@ -90,13 +81,7 @@ const ProductCard = ({ product }) => {
             </h5>
           </Link>
           <span className="w-full flex items-center pb-1">
-            <ReactStars
-              count={5}
-              size={24}
-              value={product.rating.rate}
-              edit={false}
-              activeColor="#ffd700"
-            />
+            <Rating value={product.rating.rate} readOnly size="small" />
           </span>
           <p className="text-[18px] font-bold pb-2 text-[var(--color-50)]">
             ${product.price}

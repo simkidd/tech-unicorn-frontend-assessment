@@ -5,7 +5,7 @@ import Meta from "../components/Meta";
 import { MdOutlineCheckCircleOutline, MdAddShoppingCart } from "react-icons/md";
 import { AiOutlineHeart } from "react-icons/ai";
 import Testimonials from "../components/Testimonials";
-import ReactStars from "react-rating-stars-component";
+import Rating from "@mui/material/Rating"
 
 const SingleProduct = () => {
   const { id } = useParams();
@@ -36,7 +36,7 @@ const SingleProduct = () => {
               <span>{product.category}</span> &gt;{" "}
               <span className="text-gray-400">{product.title}</span>
             </p>
-            <h2 className="text-[40px] font-[700]">{product.title}</h2>
+            <h2 className="text-[40px] font-[700] leading-none">{product.title}</h2>
           </div>
           <div className="border bg-[var(--placeholder)] ">Image is here.</div>
         </div>
@@ -51,21 +51,19 @@ const SingleProduct = () => {
             </div>
             <div className="pl-8">
               <div className="flex flex-col gap-4">
-                <h5 className="font-[700] text-[40px]">{product.title}</h5>
+                <h5 className="font-[700] text-[40px] leading-none">{product.title}</h5>
                 <div className="flex flex-col gap-2">
                   <p className="flex items-center gap-4">
                     <span className="font-bold text-[14px]">Availability:</span>
                     48 in stocks
                   </p>
                   <p className="flex items-center gap-4">
-                    <ReactStars
-                      count={5}
-                      size={24}
-                      value={product.rating.rate}
-                      edit={false}
-                      activeColor="#ffd700"
-                    />{" "}
-                    <span> {product.rating.count}</span>
+                    <Rating 
+                      value={product.rating?.rate}
+                      readOnly
+                      size='small'
+                    />
+                    <span>{product.rating?.count}</span>
                   </p>
                   <p className="text-[var(--color-50)] text-[20px] font-bold flex">
                     ${product.price}
@@ -84,19 +82,19 @@ const SingleProduct = () => {
                     <option>XL</option>
                   </select>
                   <div className="flex items-center">
-                    <button>-</button>
-                    <span>2</span>
-                    <button>+</button>
+                    <button className="flex items-center justify-center border rounded w-[25px] h-[25px]">-</button>
+                    <span className="flex items-center justify-center  w-[25px] h-[25px]">2</span>
+                    <button className="flex items-center justify-center border rounded w-[25px] h-[25px]">+</button>
                   </div>
                 </div>
                 <div className="flex items-center gap-4">
                   <button className="bg-[var(--color-50)] mb-1 py-1 px-3 flex items-center justify-center rounded-[5px] text-white border-[var(--color-50)] border-[2px]">
                     Add to cart
-                    <MdAddShoppingCart size={20} className="" />
+                    <MdAddShoppingCart size={20} className="ml-2" />
                   </button>
                   <button className="bg-transparent mb-1 py-1 px-3 flex items-center justify-center rounded-[5px] text-[var(--color-50)] border-[2px] border-[var(--color-50)]">
                     Wishlist
-                    <AiOutlineHeart size={20} className="" />
+                    <AiOutlineHeart size={20} className="ml-2" />
                   </button>
                 </div>
               </div>
