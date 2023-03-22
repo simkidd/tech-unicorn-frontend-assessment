@@ -5,7 +5,8 @@ import Meta from "../components/Meta";
 import { MdOutlineCheckCircleOutline, MdAddShoppingCart } from "react-icons/md";
 import { AiOutlineHeart } from "react-icons/ai";
 import Testimonials from "../components/Testimonials";
-import Rating from "@mui/material/Rating"
+import Rating from "@mui/material/Rating";
+import Zoom from 'react-img-zoom';
 
 const SingleProduct = () => {
   const { id } = useParams();
@@ -43,10 +44,16 @@ const SingleProduct = () => {
         {/* breadcrumb ends here */}
         <div className="w-full py-[8rem] md:px-[4rem] px-[1rem]">
           {/* top row */}
-          <div className="grid md:grid-cols-[55%_45%] box-border">
+          <div className="grid md:grid-cols-[55%_45%] box-border pb-8">
             <div>
-              <div className="image-wrap">
-                <img src={product.image} alt="" />
+              <div className="image-wrap box-border flex items-center justify-center">
+              <Zoom 
+                img={product.image}
+                zoomScale={3}
+                width={400}
+                height={400}
+              />
+                {/* <img src={product.image} alt="" /> */}
               </div>
             </div>
             <div className="pl-8">
