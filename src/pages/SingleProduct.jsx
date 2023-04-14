@@ -47,13 +47,13 @@ const SingleProduct = () => {
           <div className="grid md:grid-cols-[55%_45%] box-border pb-8">
             <div>
               <div className="image-wrap box-border flex items-center justify-center">
-              <Zoom 
+              {/* <Zoom 
                 img={product.image}
                 zoomScale={3}
                 width={400}
                 height={400}
-              />
-                {/* <img src={product.image} alt="" /> */}
+              /> */}
+                <img src={product.image} alt="" />
               </div>
             </div>
             <div className="pl-8">

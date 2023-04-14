@@ -1,63 +1,112 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Testimonials from "../components/Testimonials";
 import { MdArrowForwardIos } from "react-icons/md";
-// import ProductCard from "../components/ProductCard";
-// import NewArrival from "../components/NewArrival";
-import HeroSlider from "../components/HeroSlider";
-import {Link} from 'react-router-dom';
-import Meta from '../components/Meta'
+import { HiArrowRight } from "react-icons/hi";
+import NewArrival from "../components/NewArrival";
+import Meta from "../components/Meta";
+import axios from "axios";
+import Bestseller from "../components/Bestseller";
+import Hero from "../components/Hero";
+import Marquee from "../components/Marquee";
 
 const Home = () => {
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      setLoading(true);
+      try {
+        const res = await axios.get("https://fakestoreapi.com/products");
+        setProducts(res.data);
+        setLoading(false);
+      } catch (err) {
+        console.log(err);
+        // setError("Error fetching data!");
+        // setLoading(false);
+      }
+    };
+    fetchProducts();
+  }, []);
+
   return (
     <div className="w-full bg-white">
-    <Meta title={"E-commerce App"} />
+      <Meta title={"E-commerce App"} />
       <section className="hero">
-        <div className="grid md:grid-cols-[40%_60%] w-full">
-        <div className='flex flex-col p-[4rem]'>
-          <h2 className="text-[48px] font-[700]">Sort Out Your Spring Look</h2>
-          <p className="text-[16px] py-6">We will help to develop every smallest thing into a big one for your company</p>
-          <div >
-          <Link to='shop' className="text-[16px] bg-[var(--color-50)] w-fit text-white rounded-[5px] flex items-center justify-between py-3 px-5 mb-[3rem] cursor-pointer">
-              Shop
-              <MdArrowForwardIos className="ml-2 text-white" />
-            </Link>
-
+        <Hero />
+      </section>
+      {/* categories */}
+      <section id="categories">
+        <div className="md:px-[104px] px-[20px] md:py-[200px] py-[100px] grid md:grid-cols-3 grid-cols-2 md:gap-4 gap-[12px]">
+          <div
+            id="card"
+            className="md:h-[560px] h-[360px] bg-[#e2e2ea] md:px-[40px] px-[20px] md:pb-[40px] md:pt-[302px] pt-[180px] box-border"
+          >
+            <h2 className="font-merriweather font-[700] md:text-[48px] text-[28px] leading-[57.6px] tracking-[0.005em] md:pb-[24px] ">
+              Dresses
+            </h2>
+            <p className="md:text-[16px] text-[14px] font-[400] font-dmsans text-[#9a9ab0] leading-[125%] tracking-[0.5%] md:pb-[56px] pb-[14px] ">
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry.
+            </p>
+            <button className="w-[40px] h-[40px] rounded-[28px] bg-[var(--color-50)] border-0 text-white flex items-center justify-center cursor-pointer">
+              <HiArrowRight size={24} />
+            </button>
           </div>
-        </div>
-        <div className=''>
-          <HeroSlider />
-        </div>
+          <div
+            id="card"
+            className="md:h-[560px] h-[360px] bg-[#e2e2ea] md:px-[40px] px-[20px] md:pb-[40px] md:pt-[302px] pt-[180px] box-border"
+          ></div>
+          <div
+            id="card"
+            className="md:h-[560px] h-[360px] bg-[#e2e2ea] md:px-[40px] px-[20px] md:pb-[40px] md:pt-[302px] pt-[180px] box-border"
+          ></div>
+          <div
+            id="card"
+            className="md:h-[560px] h-[360px] bg-[#e2e2ea] md:px-[40px] px-[20px] md:pb-[40px] md:pt-[302px] pt-[180px] box-border"
+          ></div>
+          <div
+            id="card"
+            className="md:h-[560px] h-[360px] bg-[#e2e2ea] md:px-[40px] px-[20px] md:pb-[40px] md:pt-[302px] pt-[180px] box-border"
+          ></div>
+          <div
+            id="card"
+            className="md:h-[560px] h-[360px] bg-[#e2e2ea] md:px-[40px] px-[20px] md:pb-[40px] md:pt-[302px] pt-[180px] box-border"
+          ></div>
         </div>
       </section>
-      <section>
-        {/* <NewArrival /> */}
+      {/* new arrival */}
+      <section id="new-arrival">
+        <NewArrival products={products} />
       </section>
-      <section id='discount'>
-        <div className="md:container w-full mx-auto px-[2rem] text-white">
-          <div className="flex flex-col items-center justify-center bg-[var(--color-50)] p-[2rem] md:py-[3rem] py-[1rem]">
-            <h4 className="text-[24px] pt-[3rem]">March Discount</h4>
-            <h2 className="md:text-[64px] text-[54px] font-700 pb-[2rem]">Up to 70% off</h2>
-            <button className="text-[16px] bg-white text-[var(--color-50)] rounded-[5px] flex items-center justify-between py-3 px-5 mb-[3rem] cursor-pointer">
+      {/* discount */}
+      <section id="discount">
+        <div className=" w-full text-white md:px-[104px] px-[20px]">
+          <div className="flex flex-col w-full items-center justify-center bg-[var(--color-50)]  md:py-[3rem]  md:h-[496px] h-[296px]">
+            <h4 className="md:text-[24px] text-[18px] font-merriweather font-[700] md:pb-[24px] pb-[10px]">
+              March Discount
+            </h4>
+            <h2 className="md:text-[64px] text-[44px] font-[700] md:pb-[56px] pb-[10px] font-merriweather">
+              Up to 70% off
+            </h2>
+            <button className="md:text-[16px] text-[14px] bg-white text-[var(--color-50)] rounded-[8px] md:h-[56px] h-[46px] md:w-[124px] w-[100px] flex items-center justify-center cursor-pointer font-dmsans border-0">
               Get it
               <MdArrowForwardIos className="ml-2 text-[var(--color-50)]" />
             </button>
           </div>
         </div>
       </section>
-      <section id='best-seller' >
-        <div className="md:container mx-auto md:px-[2rem] px-[1rem] py-[8rem]">
-          <div className="w-full">
-          <h2 className="md:text-[48px] text-[38px] font-[700] py-8">Best Seller</h2>
-          </div>
-            <div className="grid md:grid-cols-4 grid-cols-2 gap-4">
-              {/* <ProductCard />
-              <ProductCard />
-              <ProductCard />
-              <ProductCard /> */}
-            </div>
-        </div>
+      {/* best seller */}
+      <section id="best-seller">
+        <Bestseller products={products} />
       </section>
-      <section>
+      {/* marquee */}
+      <section id="marquee">
+        <Marquee />
+      </section>
+      {/* testimonials */}
+      <section id="testimonials">
         <Testimonials />
       </section>
     </div>
