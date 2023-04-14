@@ -9,7 +9,7 @@ const Bestseller = ({ products }) => {
   const topRatedProducts = sortedProducts.slice(0, 4);
 
   return (
-    <div className="md:px-[104px] px-[20px] md:py-[200px] py-[100px]">
+    <div className="md:px-[104px] px-[20px] md:py-[200px] py-[100px] box-border">
       <div className="w-full">
         <h2 className="md:text-[48px] text-[38px] font-[700] py-8">
           Best Seller

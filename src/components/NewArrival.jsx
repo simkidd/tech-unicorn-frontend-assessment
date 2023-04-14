@@ -16,14 +16,38 @@ const NewArrival = ({products}) => {
     <Wrapper className="w-full md:pb-[200px] pb-[100px] ">
       <div className="w-full flex justify-between items-center md:px-[104px] px-[20px] pb-5">
         <h2 className="text-5xl font-[700] ">New Arrival</h2>
-        <Link className="text-base text-[var(--color-50)]">See All</Link>
+        <Link className="text-[24px] font-merriweather tracking-[0.5%] text-[var(--color-50)]">See All</Link>
       </div>
       <div>
         <Swiper
-          slidesPerView={4}
+          slidesPerView={2}
           spaceBetween={20}
           modules={[Navigation]}
           navigation={true}
+          breakpoints={
+            {
+              // // when window width is >= 320px
+              // 320: {
+              //   slidesPerView: 1,
+              //   spaceBetween: 20,
+              // },
+              // // when window width is >= 480px
+              // 480: {
+              //   slidesPerView: 2,
+              //   spaceBetween: 20,
+              // },
+              // when window width is >= 640px
+              // 640: {
+              //   slidesPerView: 2,
+              //   spaceBetween: 20,
+              // },
+              // when window width is >= 768px
+              768: {
+                slidesPerView: 4,
+                spaceBetween: 20,
+              },
+            }
+          }
         >
         {products.map((product) => (
           <SwiperSlide key={product.id}>
@@ -43,6 +67,11 @@ const Wrapper = styled.div`
     padding: 2rem 3.5rem;
     width: 100%;
     height: 100%;
+    @media screen and (max-width:768px) {
+      padding-left: 20px;
+      padding-right: 20px;
+
+    }
   }
   .swiper .swiper-slide {
     box-sizing: border-box;

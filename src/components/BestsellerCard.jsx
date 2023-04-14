@@ -7,7 +7,7 @@ import Rating from "@mui/material/Rating";
 const BestsellerCard = ({product}) => {
   return (
     <>
-      <div className="flex flex-col items-center overflow-hidden md:w-[296px] h-[449px]">
+      <div className="flex flex-col items-center overflow-hidden w-full h-[449px]">
         {/* image container */}
         <div className="w-full h-[296px] flex items-center justify-center relative group box-border overflow-hidden mb-[20px]">
           <img
