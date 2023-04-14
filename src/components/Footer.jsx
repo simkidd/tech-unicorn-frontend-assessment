@@ -46,7 +46,7 @@ const Footer = () => {
               </li>
             </ul>
           </div>
-          <div className="w-full max-w-[229px]">
+          <div className="w-full md:max-w-[229px]">
             <h5 className="font-dmsans font-[700] leading-[19.2px] tracking-[0.5%] text-[16px] md:pb-[30px] pb-[15px] ">
               Contact
             </h5>
@@ -64,7 +64,7 @@ const Footer = () => {
             </ul>
           </div>
         </div>
-        <div className="pt-[40px] md:pt-[20px]">
+        <div className="pt-[40px] md:pt-[20px] pb-[10px]">
           <p className="text-white font-dmsans font-[400] tracking-[0.5%] leading-[20px] text-[16px]">
             Copyright Tanah Air Studio
           </p>
