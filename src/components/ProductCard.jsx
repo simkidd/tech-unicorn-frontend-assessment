@@ -55,7 +55,7 @@ export const ProductListCard = ({ product }) => {
 const ProductCard = ({ product }) => {
   return (
     <>
-      <div className="flex flex-col items-center overflow-hidden w-[296px] h-[449px]">
+      <div className="flex flex-col items-center overflow-hidden md:w-[296px] h-[449px]">
       {/* image container */}
         <div className="w-full h-[296px] flex items-center justify-center relative group box-border overflow-hidden mb-[20px]">
           <img
@@ -74,7 +74,7 @@ const ProductCard = ({ product }) => {
         </div>
         {/* image container end */}
         {/* product details */}
-        <div className="flex flex-col items-center px-4 w-full">
+        <div className="flex flex-col items-center w-full">
           <p className="text-[14px] font-dmsans font-[500] text-[var(--color-50)] pb-[8px] leading-[18.2px] tracking-[0.8%]">
             {product.category}
           </p>
@@ -86,7 +86,7 @@ const ProductCard = ({ product }) => {
           <span>
             <Rating value={product.rating.rate} readOnly size="small" />
           </span>
-          <p className="text-[24px] font-merriweather font-[700] text-[var(--color-50)] pt-[18px] tracking-[0.5%] leading-[28.8px]">
+          <p className="text-[24px] font-merriweather font-[700] text-[var(--color-50)] md:pt-[18px] pt-[5px] pb-[10px] tracking-[0.5%] leading-[28.8px]">
             ${product.price}
           </p>
           <Link className="bg-[var(--color-50)] md:hidden py-1 px-3 flex items-center justify-center rounded-[5px] text-white pb-1">

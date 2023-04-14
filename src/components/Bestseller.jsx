@@ -9,13 +9,13 @@ const Bestseller = ({ products }) => {
   const topRatedProducts = sortedProducts.slice(0, 4);
 
   return (
-    <div className="md:px-[104px] px-[1rem] py-[200px]">
+    <div className="md:px-[104px] px-[20px] md:py-[200px] py-[100px]">
       <div className="w-full">
         <h2 className="md:text-[48px] text-[38px] font-[700] py-8">
           Best Seller
         </h2>
       </div>
-      <div className="grid md:grid-cols-4 grid-cols-2 gap-4">
+      <div className="grid md:grid-cols-4 grid-cols-2 gap-4 box-border">
          {/* Render the BestSellerCard component for each top rated product */}
         {topRatedProducts.map((product) => (
           <BestsellerCard key={product.id} product={product} />
