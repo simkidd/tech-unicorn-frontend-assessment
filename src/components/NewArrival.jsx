@@ -15,8 +15,8 @@ const NewArrival = ({products}) => {
   return (
     <Wrapper className="w-full md:pb-[200px] pb-[100px] ">
       <div className="w-full flex justify-between items-center md:px-[104px] px-[20px] pb-5">
-        <h2 className="text-5xl font-[700] ">New Arrival</h2>
-        <Link className="text-[24px] font-merriweather tracking-[0.5%] text-[var(--color-50)]">See All</Link>
+        <h2 className="md:text-[48px] text-[28px] font-[700] ">New Arrival</h2>
+        <Link to='shop' className="md:text-[24px] text-[16px] font-merriweather tracking-[0.5%] text-[var(--color-50)]">See All</Link>
       </div>
       <div>
         <Swiper

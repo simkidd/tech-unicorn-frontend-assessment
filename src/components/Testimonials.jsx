@@ -12,7 +12,7 @@ const Testimonials = () => {
   return (
     <Wrapper className="w-full">
       <div className="flex flex-col items-center relative">
-        <h2 className="font-[700] md:text-[48px] mb-[70px] text-[38px]">What Our Customer Says</h2>
+        <h2 className="font-[700] md:text-[48px] mb-[70px] text-[28px]">What Our Customer Says</h2>
         <div className="w-full mb-[200px]">
           <Swiper
             slidesPerView={1}

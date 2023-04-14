@@ -7,7 +7,7 @@ const Hero = () => {
   return (
     <div className="md:grid md:grid-cols-[37%_63%] flex flex-col w-full md:pl-[104px] md:pr-[0] px-[20px] md:h-[519px] h-full box-border">
           <div className="flex flex-col md:pt-[89px] pt-[50px]">
-            <h2 className="text-[48px] font-[700] font-merriweather text-[#11142d] pb-[32px] tracking-[0.005em] leading-[120%]">
+            <h2 className="md:text-[48px] text-[38px] font-[700] font-merriweather text-[#11142d] pb-[32px] tracking-[0.005em] leading-[120%]">
               Sort Out Your <br /> Spring Look
             </h2>
             <p className="text-[16px] w-[370px] pb-[48px] font-[500] font-dmsans text-[#9a9ab0] leading-[120%]">
