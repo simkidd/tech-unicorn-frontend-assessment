@@ -21,7 +21,7 @@ const Navbar = () => {
 
   return (
     <>
-      <header className="header-top bg-white w-full h-[96px] md:px-[104px] px-[1rem] flex items-center">
+      <header className="header-top bg-white w-full md:h-[96px] h-[66px] md:px-[104px] px-[1rem] flex items-center">
         <div className="flex container mx-auto md:flex justify-between items-center">
           <div className="md:flex hidden items-center font-dmsans text-[16px] font-[500]">
             <BiPhoneCall className="mr-[16px]" />
@@ -72,7 +72,7 @@ const Navbar = () => {
         </div>
       </header>
       
-      <nav className="header-bottom bg-white md:px-[104px] px-[1rem] z-20 relative shadow-sm h-[109px]">
+      <nav className="header-bottom bg-white md:px-[104px] px-[1rem] z-20 relative shadow-sm md:h-[109px] h-[69px] ">
         <div className="md:container flex justify-between h-full items-center relative mx-auto">
           {/* menu button */}
           <div onClick={handleMenu} className="md:hidden z-20 cursor-pointer">
@@ -83,7 +83,7 @@ const Navbar = () => {
           <ul
             className={
               openMenu
-                ? "flex flex-col top-[100px] absolute bg-white left-0 w-full p-0 duration-300 shadow-lg py-4 rounded-b-[8px] font-dmsans font-[400] text-[16px]"
+                ? "flex flex-col top-[65px] absolute bg-white left-0 w-full p-0 duration-300 shadow-lg py-4 rounded-b-[8px] font-dmsans font-[400] text-[16px]"
                 : "hidden"
             }
           >
