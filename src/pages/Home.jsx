@@ -7,7 +7,7 @@ import Meta from "../components/Meta";
 import axios from "axios";
 import Bestseller from "../components/Bestseller";
 import Hero from "../components/Hero";
-import Marquee from "../components/Marquee";
+import MarqueeSlide from "../components/Marquee";
 
 const Home = () => {
   const [products, setProducts] = useState([]);
@@ -103,7 +103,7 @@ const Home = () => {
       </section>
       {/* marquee */}
       <section id="marquee">
-        <Marquee />
+        <MarqueeSlide />
       </section>
       {/* testimonials */}
       <section id="testimonials">
