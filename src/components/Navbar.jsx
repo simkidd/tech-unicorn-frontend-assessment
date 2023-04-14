@@ -187,8 +187,8 @@ const Navbar = () => {
             <li className="relative flex items-center justify-center">
               <NavLink className="font-bold text-[#11142D] hover:text-[var(--color-50)]">
                 <BsCart3 size={24} />
-                <span className="absolute bg-[var(--color-50)] text-white w-[24px] h-[24px] rounded-[50%] flex items-center justify-center top-[-15px] right-[-12px] text-[16px] border-0">
-                  3
+                <span className="absolute bg-[var(--color-50)] text-white w-[18px] h-[18px] rounded-[50%] flex items-center justify-center top-[-12px] right-[-10px] text-[14px] border-0">
+                  55
                 </span>
               </NavLink>
             </li>
