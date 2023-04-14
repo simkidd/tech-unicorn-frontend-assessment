@@ -8,7 +8,7 @@ import { AiOutlineMail } from "react-icons/ai";
 const Footer = () => {
   return (
     <div className="footer bg-[var(--color-50)] w-full md:h-[476px] text-white">
-      <div className=" w-full md:px-[104px] px-[20px] pt-[74px] md:flex flex flex-col">
+      <div className=" w-full md:px-[104px] px-[20px] md:pt-[74px] pt-[50px] md:flex flex flex-col">
         <div className="pb-[30px]">
           <img src={Logo} alt="" className="w-[240px] " />
         </div>
