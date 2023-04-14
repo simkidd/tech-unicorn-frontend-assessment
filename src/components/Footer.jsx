@@ -7,20 +7,20 @@ import { AiOutlineMail } from "react-icons/ai";
 
 const Footer = () => {
   return (
-    <div className="footer bg-[var(--color-50)] w-full h-[476px] text-white">
-      <div className=" w-full px-[104px] pt-[74px] md:flex flex flex-col">
+    <div className="footer bg-[var(--color-50)] w-full md:h-[476px] text-white">
+      <div className=" w-full md:px-[104px] px-[20px] pt-[74px] md:flex flex flex-col">
         <div className="pb-[30px]">
           <img src={Logo} alt="" className="w-[240px] " />
         </div>
-        <div className="flex justify-between mb-4">
-          <div className="w-full max-w-[440px]">
+        <div className="flex md:flex-row flex-col justify-between mb-4">
+          <div className="w-full max-w-[440px] pb-[30px]">
             <p className="text-[16px] font-dmsans font-[400] leading-[20px] tracking-[0.5%]">
               Our Studio is a digital agency UI/UX Design and website
               Development located in Ohio United States of America
             </p>
           </div>
-          <div>
-            <h5 className="font-dmsans font-[700] leading-[19.2px] tracking-[0.5%] text-[16px] pb-[30px] ">
+          <div className="pb-[30px]">
+            <h5 className="font-dmsans font-[700] leading-[19.2px] tracking-[0.5%] text-[16px] md:pb-[30px] pb-[15px] ">
               Our Social Media
             </h5>
             <ul>
@@ -47,7 +47,7 @@ const Footer = () => {
             </ul>
           </div>
           <div className="w-full max-w-[229px]">
-            <h5 className="font-dmsans font-[700] leading-[19.2px] tracking-[0.5%] text-[16px] pb-[30px] ">
+            <h5 className="font-dmsans font-[700] leading-[19.2px] tracking-[0.5%] text-[16px] md:pb-[30px] pb-[15px] ">
               Contact
             </h5>
             <ul>
@@ -64,7 +64,7 @@ const Footer = () => {
             </ul>
           </div>
         </div>
-        <div>
+        <div className="pt-[40px] md:pt-[20px]">
           <p className="text-white font-dmsans font-[400] tracking-[0.5%] leading-[20px] text-[16px]">
             Copyright Tanah Air Studio
           </p>
