@@ -64,7 +64,7 @@ export default NewArrival;
 
 const Wrapper = styled.div`
   .swiper {
-    padding: 2rem 3.5rem;
+    padding: 20px 3.5rem;
     width: 100%;
     height: 100%;
     @media screen and (max-width:768px) {

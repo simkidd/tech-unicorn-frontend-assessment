@@ -42,7 +42,7 @@ const NewArrivalCard = ({product}) => {
           <p className="text-[24px] font-merriweather font-[700] text-[var(--color-50)] md:pt-[18px] pt-[5px] pb-[10px] tracking-[0.5%] leading-[28.8px]">
             ${product.price}
           </p>
-          <Link className="bg-[var(--color-50)] md:hidden py-1 px-3 flex items-center justify-center rounded-[5px] text-white pb-1">
+          <Link className="bg-[var(--color-50)] md:hidden py-1 px-3 flex items-center justify-center rounded-[5px] text-white pb-1 w-full h-[40px] font-dmsans">
             Add to cart
             <MdAddShoppingCart size={20} className="ml-2" />
           </Link>
