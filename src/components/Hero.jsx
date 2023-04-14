@@ -11,7 +11,7 @@ const Hero = () => {
               Sort Out Your <br /> Spring Look
             </h2>
             <p className="text-[16px] w-[370px] pb-[48px] font-[500] font-dmsans text-[#9a9ab0] leading-[120%]">
-              We will help to develop every smallest thing into a<br/> big one
+              We will help to develop every smallest thing into <br/> a big one
               for your company
             </p>
             <div className='mb-[48px]'>

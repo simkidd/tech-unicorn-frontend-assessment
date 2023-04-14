@@ -1,10 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper";
-// import ProductCard from "./ProductCard";
 import styled from "styled-components";
-import axios from "axios";
 import NewArrivalCard from "./NewArrivalCard";
 
 import "swiper/css";
@@ -26,21 +24,6 @@ const NewArrival = ({products}) => {
           navigation={true}
           breakpoints={
             {
-              // // when window width is >= 320px
-              // 320: {
-              //   slidesPerView: 1,
-              //   spaceBetween: 20,
-              // },
-              // // when window width is >= 480px
-              // 480: {
-              //   slidesPerView: 2,
-              //   spaceBetween: 20,
-              // },
-              // when window width is >= 640px
-              // 640: {
-              //   slidesPerView: 2,
-              //   spaceBetween: 20,
-              // },
               // when window width is >= 768px
               768: {
                 slidesPerView: 4,
