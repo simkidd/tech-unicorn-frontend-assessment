@@ -59,31 +59,31 @@ const SingleProduct = ({ products }) => {
           <div className="flex md:flex-row flex-col gap-[40px] box-border pb-[40px]">
             {/* product image */}
             <div className="w-full">
-              <div className="md:w-[592px] w-full md:h-[440px] h-[340px] box-border flex gap-[16px]">
+              <div className="md:w-[592px] w-full md:h-[440px] h-[340px] box-border flex md:gap-[16px] gap-[10px]">
               {/* small images */}
-                <div className="md:w-[128px] w-[100px] h-full flex flex-col gap-[18px]">
-                  <div className="w-full h-[71.5px] md:h-[96.5px] border">
+                <div className="md:w-[128px] w-[100px] h-full flex flex-col md:gap-[18px] gap-[9px]">
+                  <div className="w-full h-[78.25px] md:h-[96.5px] border">
                     <img
                       src={product.image}
                       alt=""
                       className="w-full h-full scale-90 object-contain"
                     />
                   </div>
-                  <div className="w-full h-[71.5px] md:h-[96.5px] border">
+                  <div className="w-full h-[78.25px] md:h-[96.5px] border">
                     <img
                       src={product.image}
                       alt=""
                       className="w-full h-full scale-90 object-contain"
                     />
                   </div>
-                  <div className="w-full h-[71.5px] md:h-[96.5px] border">
+                  <div className="w-full h-[78.25px] md:h-[96.5px] border">
                     <img
                       src={product.image}
                       alt=""
                       className="w-full h-full scale-90 object-contain"
                     />
                   </div>
-                  <div className="w-full h-[71.5px] md:h-[96.5px] border">
+                  <div className="w-full h-[78.25px] md:h-[96.5px] border">
                     <img
                       src={product.image}
                       alt=""
@@ -133,7 +133,7 @@ const SingleProduct = ({ products }) => {
                     {product.category}
                   </p>
                 </div>
-                <div className="flex items-center gap-[72px] my-[30px]">
+                <div className="flex items-center gap-[72px] my-[25px]">
                   <div className="w-[153px] h-[40px] flex items-center relative ">
                     <select
                       className="border outline-none rounded-[8px]  text-[16px] font-dmsans leading-[19.2px] tracking-[0.5%] pl-[16px] pr-[16px] appearance-none w-full h-full bg-transparent"
