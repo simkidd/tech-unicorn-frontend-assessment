@@ -15,7 +15,7 @@ const Cart = () => {
                 <Link to="/">Home</Link> &gt;{" "}
                 <span className="text-gray-400">Shopping Cart</span>
               </p>
-              <h2 className="text-[40px] font-[700] leading-[57.6px] tracking-[0.5%] text-[#11142d] font-merriweather ">
+              <h2 className="md:text-[38px] text-[28px] font-[700]  tracking-[0.5%] text-[#11142d] font-merriweather ">
                 Shopping Cart
               </h2>
             </div>
@@ -30,7 +30,7 @@ const Cart = () => {
         {/* breadcrumb ends here */}
         {/* cart */}
         <div className="md:px-[104px] px-[20px] md:py-[160px] py-[80px]">
-          <h2 className="text-[48px] font-[700] font-merriweather leading-[57.6px] tracking-[0.5%] ">
+          <h2 className="md:text-[38px] text-[28px] font-[700] font-merriweather leading-[57.6px] tracking-[0.5%] ">
             Cart
           </h2>
           <div className="flex md:flex-row flex-col">
@@ -40,7 +40,7 @@ const Cart = () => {
             <div>
               <div className="md:w-[400px] w-full">
                 <div className="bg-[var(--color-10)] rounded-[8px] flex flex-col py-[30px] px-[30px]">
-                  <h5 className="text-[24px] font-merriweather font-[700] leading-[28.8px] tracking-[0.5%] text-[#11142d] pb-[28px]">
+                  <h5 className="text-[20px] font-merriweather font-[700] leading-[28.8px] tracking-[0.5%] text-[#11142d] pb-[28px]">
                     Have a Coupon?
                   </h5>
                   <input
@@ -55,7 +55,7 @@ const Cart = () => {
                   </div>
                 </div>
                 <div>
-                  <p className="font-[700] text-[16px] leading-[19.2px] tracking-[0.5%] text-[#11142d] font-merriweather flex items-center justify-between pb-[24px]">
+                  <p className="font-[700] text-[16px] leading-[19.2px] tracking-[0.5%] text-[#11142d] font-merriweather flex items-center justify-between py-[24px]">
                     Subtotal<span className="text-[16px] font-[400] leading-[20px] tracking-[0.5%] font-dmsans text-[#515151] " >$150</span>
                   </p>
                   <p className="font-[700] text-[16px] leading-[19.2px] tracking-[0.5%] text-[#11142d] font-merriweather flex items-center justify-between pb-[24px]">
@@ -64,7 +64,7 @@ const Cart = () => {
                   <p className="font-[700] text-[16px] leading-[19.2px] tracking-[0.5%] text-[#11142d] font-merriweather flex items-center justify-between ">
                     TOTAL<span className="text-[16px] font-[700] leading-[20px] tracking-[0.5%] font-dmsans text-[#11142d] " >$350</span>
                   </p>
-                  <button>Checkout</button>
+                  <button className="w-full h-[56px] bg-[var(--color-50)] rounded-[8px] text-white mt-[46px]">Checkout</button>
                 </div>
               </div>
             </div>

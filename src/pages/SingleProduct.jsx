@@ -40,7 +40,7 @@ const SingleProduct = ({ products }) => {
                 <span>{product.category}</span> &gt;{" "}
                 <span className="text-gray-400">{product.title}</span>
               </p>
-              <h2 className="text-[40px] font-[700] leading-[57.6px] tracking-[0.5%] text-[#11142d] font-merriweather ">
+              <h2 className="md:text-[38px] text-[28px] font-[700]  tracking-[0.5%] text-[#11142d] font-merriweather ">
                 {product.title}
               </h2>
             </div>
@@ -104,11 +104,11 @@ const SingleProduct = ({ products }) => {
             {/* product details */}
             <div className="w-full">
               <div className="flex flex-col">
-                <h5 className="font-[700] font-merriweather text-[28px] tracking-[0.5%] leading-[57.6px] text-[#11142d] pb-[24px] ">
+                <h5 className="font-[700] font-merriweather text-[28px] tracking-[0.5%]  text-[#11142d] pb-[18px] ">
                   {product.title}
                 </h5>
-                <div className="flex flex-col gap-2">
-                  <p className="flex items-center text-[16px] font-merriweather text-[#515151] leading-[19.2px] tracking-[0.5%] font-[400] gap-4 pb-[26px]">
+                <div className="flex flex-col">
+                  <p className="flex items-center text-[16px] font-merriweather text-[#515151] leading-[19.2px] tracking-[0.5%] font-[400] gap-4 pb-[20px]">
                     <span className="font-[700] text-[16px] font-merriweather leading-[19.2px] tracking-[0.5%] text-[#11142d] ">
                       Availability:
                     </span>
@@ -122,7 +122,7 @@ const SingleProduct = ({ products }) => {
                     />
                     <span>{product.rating?.count}</span>
                   </p>
-                  <p className="text-[var(--color-50)] font-[700] text-[24px] tracking-[0.5%] leading-[46.8px] font-merriweather flex py-[40px]">
+                  <p className="text-[var(--color-50)] font-[700] text-[24px] tracking-[0.5%] leading-[46.8px] font-merriweather flex py-[20px]">
                     ${product.price}
                     <span></span>
                   </p>
@@ -133,7 +133,7 @@ const SingleProduct = ({ products }) => {
                     {product.category}
                   </p>
                 </div>
-                <div className="flex items-center gap-[72px] my-[56px]">
+                <div className="flex items-center gap-[72px] my-[30px]">
                   <div className="w-[153px] h-[40px] flex items-center relative ">
                     <select
                       className="border outline-none rounded-[8px]  text-[16px] font-dmsans leading-[19.2px] tracking-[0.5%] pl-[16px] pr-[16px] appearance-none w-full h-full bg-transparent"
@@ -175,7 +175,7 @@ const SingleProduct = ({ products }) => {
           <div className="flex md:flex-row flex-col gap-[40px] box-border pt-[40px]">
             <div className="w-full">
               <div className="md:w-[592px] w-full">
-                <h5 className="text-[24px] font-[700] font-merriweather leading-[28.8px] tracking-[0.5%] text-[#11142d] pb-[32px]">
+                <h5 className="text-[24px] font-[700] font-merriweather leading-[28.8px] tracking-[0.5%] text-[#11142d] md:pb-[30px] pb-[15px]">
                   Description
                 </h5>
                 <p className="text-[16px] font-dmsans font-[400] leading-[20px] tracking-[0.5%] text-[#515151]">
@@ -186,25 +186,25 @@ const SingleProduct = ({ products }) => {
             </div>
 
             <div className="w-full">
-              <h5 className="text-[24px] font-[700] font-merriweather leading-[28.8px] tracking-[0.5%] text-[#11142d]  pb-5">
+              <h5 className="text-[24px] font-[700] font-merriweather leading-[28.8px] tracking-[0.5%] text-[#11142d] md:pb-5 pb-[15px]">
                 Fabric Details
               </h5>
               <ul className="md:pl-[18px] pl-0">
-                <li className="flex items-center text-[14px] pb-[16px]">
+                <li className="flex items-center text-[14px] pb-[12px]">
                   <MdOutlineCheckCircleOutline
                     size={20}
                     className="mr-[16px] text-[var(--color-50)]"
                   />{" "}
                   100% Cotton
                 </li>
-                <li className="flex items-center text-[14px] pb-[16px]">
+                <li className="flex items-center text-[14px] pb-[12px]">
                   <MdOutlineCheckCircleOutline
                     size={20}
                     className="mr-[16px] text-[var(--color-50)]"
                   />{" "}
                   Quick Dry
                 </li>
-                <li className="flex items-center text-[14px] pb-[16px]">
+                <li className="flex items-center text-[14px] pb-[12px]">
                   <MdOutlineCheckCircleOutline
                     size={20}
                     className="mr-[16px] text-[var(--color-50)]"
