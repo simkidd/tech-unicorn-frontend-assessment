@@ -4,6 +4,7 @@ import axios from "axios";
 import Meta from "../components/Meta";
 import { MdOutlineCheckCircleOutline, MdAddShoppingCart } from "react-icons/md";
 import { AiOutlineHeart } from "react-icons/ai";
+import {HiChevronDown} from 'react-icons/hi'
 import Testimonials from "../components/Testimonials";
 import Rating from "@mui/material/Rating";
 import RelatedItems from "../components/RelatedItems";
@@ -31,8 +32,8 @@ const SingleProduct = ({ products }) => {
       <Meta title={product.title} />
       <div>
         {/* title and breadcrumb */}
-        <div className="w-full flex pl-[104px]">
-          <div className="w-full pt-[136px]">
+        <div className="w-full flex md:flex-row flex-col md:pl-[104px]">
+          <div className="w-full md:pt-[136px] pt-[20px] md:px-0 px-[20px]">
             <div className="flex flex-col gap-3">
               <p className="text-[16px] font-merriweather text-[#333333] leading-[28.8px] tracking-[0.5%]">
                 <Link to="/">Home</Link> &gt; <Link to="/shop">Shop</Link> &gt;{" "}
@@ -46,43 +47,43 @@ const SingleProduct = ({ products }) => {
           </div>
           {/* title banner */}
           <div>
-            <div className="w-[608px] h-[400px] bg-[var(--placeholder)] flex items-center justify-center ">
+            <div className="md:w-[608px] w-full md:h-[400px] h-[300px] bg-[var(--placeholder)] flex items-center justify-center ">
               Image is here.
             </div>
           </div>
         </div>
         {/* breadcrumb ends here */}
         {/* product */}
-        <div className="w-full py-[160px] md:px-[104px] px-[1rem]">
+        <div className="w-full md:py-[160px] py-[80px] md:px-[104px] px-[20px]">
           {/* top row */}
-          <div className="flex gap-[40px] box-border pb-[40px]">
+          <div className="flex md:flex-row flex-col gap-[40px] box-border pb-[40px]">
             {/* product image */}
             <div className="w-full">
-              <div className="w-[592px] h-[440px] box-border flex gap-[16px]">
+              <div className="md:w-[592px] w-full md:h-[440px] h-[340px] box-border flex gap-[16px]">
               {/* small images */}
-                <div className="w-[128px] h-full flex flex-col gap-[18px]">
-                  <div className="w-full h-[96.5px] border">
+                <div className="md:w-[128px] w-[100px] h-full flex flex-col gap-[18px]">
+                  <div className="w-full h-[71.5px] md:h-[96.5px] border">
                     <img
                       src={product.image}
                       alt=""
                       className="w-full h-full scale-90 object-contain"
                     />
                   </div>
-                  <div className="w-full h-[96.5px] border">
+                  <div className="w-full h-[71.5px] md:h-[96.5px] border">
                     <img
                       src={product.image}
                       alt=""
                       className="w-full h-full scale-90 object-contain"
                     />
                   </div>
-                  <div className="w-full h-[96.5px] border">
+                  <div className="w-full h-[71.5px] md:h-[96.5px] border">
                     <img
                       src={product.image}
                       alt=""
                       className="w-full h-full scale-90 object-contain"
                     />
                   </div>
-                  <div className="w-full h-[96.5px] border">
+                  <div className="w-full h-[71.5px] md:h-[96.5px] border">
                     <img
                       src={product.image}
                       alt=""
@@ -143,7 +144,7 @@ const SingleProduct = ({ products }) => {
                       <option>L</option>
                       <option>XL</option>
                     </select>
-                    <AiOutlineHeart className="absolute right-[16px]" />
+                    <HiChevronDown size={20} className="absolute right-[16px]" />
                   </div>
                   <div className="flex items-center w-[110px] h-[33px] justify-evenly">
                     <button className="flex items-center justify-center rounded text-[16px] font-[400] font-dmsans text-[#11142d] tracking-[0.5%] leading-[20px] w-full h-full bg-transparent border-none cursor-pointer">
@@ -171,9 +172,9 @@ const SingleProduct = ({ products }) => {
           </div>
           <hr className="border-[#e1e1e1]" />
           {/* bottom row */}
-          <div className="flex gap-[40px] box-border pt-[40px]">
+          <div className="flex md:flex-row flex-col gap-[40px] box-border pt-[40px]">
             <div className="w-full">
-              <div className="w-[592px]">
+              <div className="md:w-[592px] w-full">
                 <h5 className="text-[24px] font-[700] font-merriweather leading-[28.8px] tracking-[0.5%] text-[#11142d] pb-[32px]">
                   Description
                 </h5>
@@ -188,7 +189,7 @@ const SingleProduct = ({ products }) => {
               <h5 className="text-[24px] font-[700] font-merriweather leading-[28.8px] tracking-[0.5%] text-[#11142d]  pb-5">
                 Fabric Details
               </h5>
-              <ul className="pl-[18px]">
+              <ul className="md:pl-[18px] pl-0">
                 <li className="flex items-center text-[14px] pb-[16px]">
                   <MdOutlineCheckCircleOutline
                     size={20}
