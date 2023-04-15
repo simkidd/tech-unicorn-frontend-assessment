@@ -35,8 +35,17 @@ const Cart = () => {
           </h2>
           <div className="flex md:flex-row flex-col">
             <div className="w-full">
-              <div>products in cart</div>
+            {/* cart item list */}
+              <div>
+                <div>
+                    <h4>Product</h4>
+                    <h4>Price</h4>
+                    <h4>Quantity</h4>
+                    <h4>Unit Price</h4>
+                </div>
+              </div>
             </div>
+            {/* coupon, total and checkout */}
             <div>
               <div className="md:w-[400px] w-full">
                 <div className="bg-[var(--color-10)] rounded-[8px] flex flex-col py-[30px] px-[30px]">

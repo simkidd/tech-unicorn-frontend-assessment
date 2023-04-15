@@ -1,34 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React  from "react";
 import Testimonials from "../components/Testimonials";
 import { MdArrowForwardIos } from "react-icons/md";
 import { HiArrowRight } from "react-icons/hi";
 import NewArrival from "../components/NewArrival";
 import Meta from "../components/Meta";
-import axios from "axios";
 import Bestseller from "../components/Bestseller";
 import Hero from "../components/Hero";
 import MarqueeSlide from "../components/Marquee";
 
-const Home = () => {
-  const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
-
-  useEffect(() => {
-    const fetchProducts = async () => {
-      setLoading(true);
-      try {
-        const res = await axios.get("https://fakestoreapi.com/products");
-        setProducts(res.data);
-        setLoading(false);
-      } catch (err) {
-        console.log(err);
-        // setError("Error fetching data!");
-        // setLoading(false);
-      }
-    };
-    fetchProducts();
-  }, []);
+const Home = ({products}) => {
+  
 
   return (
     <div className="w-full bg-white">

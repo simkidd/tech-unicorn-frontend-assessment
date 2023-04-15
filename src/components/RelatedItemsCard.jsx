@@ -1,4 +1,8 @@
 import React from 'react'
+import { AiOutlineHeart } from 'react-icons/ai'
+import { MdAddShoppingCart } from 'react-icons/md'
+import { Link } from 'react-router-dom'
+import Rating  from '@mui/material/Rating'
 
 const RelatedItemsCard = ({product}) => {
   return (
@@ -35,7 +39,7 @@ const RelatedItemsCard = ({product}) => {
             </h5>
           </Link>
           <span>
-            <Rating value={product.rating.rate} readOnly size="small" />
+            <Rating value={product.rating?.rate} readOnly size="small" />
           </span>
           <p className="text-[24px] font-merriweather font-[700] text-[var(--color-50)] md:pt-[18px] pt-[5px] pb-[10px] tracking-[0.5%] leading-[28.8px]">
             ${product.price}

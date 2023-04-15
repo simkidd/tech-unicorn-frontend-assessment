@@ -4,15 +4,16 @@ import axios from "axios";
 import Meta from "../components/Meta";
 import { MdOutlineCheckCircleOutline, MdAddShoppingCart } from "react-icons/md";
 import { AiOutlineHeart } from "react-icons/ai";
-import {HiChevronDown} from 'react-icons/hi'
+import { HiChevronDown } from "react-icons/hi";
 import Testimonials from "../components/Testimonials";
 import Rating from "@mui/material/Rating";
 import RelatedItems from "../components/RelatedItems";
 
-
-const SingleProduct = ({ products }) => {
+const SingleProduct = () => {
   const { id } = useParams();
   const [product, setProduct] = useState([]);
+  const [relatedProducts, setRelatedProducts] = useState([]);
+
 
   useEffect(() => {
     const getProduct = async () => {
@@ -24,8 +25,25 @@ const SingleProduct = ({ products }) => {
         console.log(error);
       }
     };
+
+    const getRelatedProducts = async () => {
+      try {
+        const res = await axios.get("https://fakestoreapi.com/products");
+
+        const filteredProducts = res.data.filter(
+          (p) => p.category === product.category && p.id !== product.id
+        );
+
+        setRelatedProducts(filteredProducts.slice(0, 4));
+      } catch (error) {
+        console.log(error);
+      }
+    };
     getProduct();
-  }, [id]);
+    getRelatedProducts()
+  }, [id, product.category, product.id]);
+
+  
 
   return (
     <>
@@ -60,7 +78,7 @@ const SingleProduct = ({ products }) => {
             {/* product image */}
             <div className="w-full">
               <div className="md:w-[592px] w-full md:h-[440px] h-[340px] box-border flex md:gap-[16px] gap-[10px]">
-              {/* small images */}
+                {/* small images */}
                 <div className="md:w-[128px] w-[100px] h-full flex flex-col md:gap-[18px] gap-[9px]">
                   <div className="w-full h-[78.25px] md:h-[96.5px] border">
                     <img
@@ -144,7 +162,10 @@ const SingleProduct = ({ products }) => {
                       <option>L</option>
                       <option>XL</option>
                     </select>
-                    <HiChevronDown size={20} className="absolute right-[16px] z-[-1]" />
+                    <HiChevronDown
+                      size={20}
+                      className="absolute right-[16px] z-[-1]"
+                    />
                   </div>
                   <div className="flex items-center w-[110px] h-[33px] justify-evenly">
                     <button className="flex items-center justify-center rounded text-[16px] font-[400] font-dmsans text-[#11142d] tracking-[0.5%] leading-[20px] w-full h-full bg-transparent border-none cursor-pointer">
@@ -181,7 +202,6 @@ const SingleProduct = ({ products }) => {
                 <p className="text-[16px] font-dmsans font-[400] leading-[20px] tracking-[0.5%] text-[#515151]">
                   {product.description}
                 </p>
-                
               </div>
             </div>
 
@@ -228,7 +248,7 @@ const SingleProduct = ({ products }) => {
         </div>
         {/* related items */}
         <div id="related-items">
-          <RelatedItems products={products} />
+          <RelatedItems relatedProducts={relatedProducts} />
         </div>
       </div>
     </>
