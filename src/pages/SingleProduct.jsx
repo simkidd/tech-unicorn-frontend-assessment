@@ -144,7 +144,7 @@ const SingleProduct = ({ products }) => {
                       <option>L</option>
                       <option>XL</option>
                     </select>
-                    <HiChevronDown size={20} className="absolute right-[16px]" />
+                    <HiChevronDown size={20} className="absolute right-[16px] z-[-1]" />
                   </div>
                   <div className="flex items-center w-[110px] h-[33px] justify-evenly">
                     <button className="flex items-center justify-center rounded text-[16px] font-[400] font-dmsans text-[#11142d] tracking-[0.5%] leading-[20px] w-full h-full bg-transparent border-none cursor-pointer">
