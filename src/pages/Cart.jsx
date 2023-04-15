@@ -8,9 +8,9 @@ const Cart = () => {
       <Meta title={"Shopping Cart"} />
       <div>
         {/* title and breadcrumb */}
-        <div className="w-full flex pl-[104px]">
-          <div className="w-full pt-[136px]">
-            <div className="flex flex-col gap-3">
+        <div className="w-full flex md:flex-row flex-col md:pl-[104px] ">
+          <div className="w-full md:pt-[136px] pt-[20px] md:px-0 px-[20px]">
+            <div className="flex flex-col gap-3 ">
               <p className="text-[16px] font-merriweather text-[#333333] leading-[28.8px] tracking-[0.5%]">
                 <Link to="/">Home</Link> &gt;{" "}
                 <span className="text-gray-400">Shopping Cart</span>
@@ -21,24 +21,24 @@ const Cart = () => {
             </div>
           </div>
           {/* title banner */}
-          <div>
-            <div className="w-[920px] h-[400px] bg-[var(--placeholder)] flex items-center justify-center ">
+          <div >
+            <div className="md:w-[920px] w-full md:h-[400px] h-[300px] bg-[var(--placeholder)] flex items-center justify-center ">
               Image is here.
             </div>
           </div>
         </div>
         {/* breadcrumb ends here */}
         {/* cart */}
-        <div className="px-[104px] py-[160px]">
+        <div className="md:px-[104px] px-[20px] md:py-[160px] py-[80px]">
           <h2 className="text-[48px] font-[700] font-merriweather leading-[57.6px] tracking-[0.5%] ">
             Cart
           </h2>
-          <div className="flex">
+          <div className="flex md:flex-row flex-col">
             <div className="w-full">
               <div>products in cart</div>
             </div>
             <div>
-              <div className="w-[400px]">
+              <div className="md:w-[400px] w-full">
                 <div className="bg-[var(--color-10)] rounded-[8px] flex flex-col py-[30px] px-[30px]">
                   <h5 className="text-[24px] font-merriweather font-[700] leading-[28.8px] tracking-[0.5%] text-[#11142d] pb-[28px]">
                     Have a Coupon?
