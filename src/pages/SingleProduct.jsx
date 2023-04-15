@@ -6,8 +6,8 @@ import { MdOutlineCheckCircleOutline, MdAddShoppingCart } from "react-icons/md";
 import { AiOutlineHeart } from "react-icons/ai";
 import Testimonials from "../components/Testimonials";
 import Rating from "@mui/material/Rating";
-import Zoom from "react-img-zoom";
 import RelatedItems from "../components/RelatedItems";
+
 
 const SingleProduct = ({ products }) => {
   const { id } = useParams();
@@ -59,47 +59,43 @@ const SingleProduct = ({ products }) => {
             {/* product image */}
             <div className="w-full">
               <div className="w-[592px] h-[440px] box-border flex gap-[16px]">
-                {/* <Zoom 
-                img={product.image}
-                zoomScale={3}
-                width={400}
-                height={400}
-              /> */}
+              {/* small images */}
                 <div className="w-[128px] h-full flex flex-col gap-[18px]">
                   <div className="w-full h-[96.5px] border">
                     <img
                       src={product.image}
                       alt=""
-                      className="w-full h-full object-contain"
+                      className="w-full h-full scale-90 object-contain"
                     />
                   </div>
                   <div className="w-full h-[96.5px] border">
                     <img
                       src={product.image}
                       alt=""
-                      className="w-full h-full object-contain"
+                      className="w-full h-full scale-90 object-contain"
                     />
                   </div>
                   <div className="w-full h-[96.5px] border">
                     <img
                       src={product.image}
                       alt=""
-                      className="w-full h-full object-contain"
+                      className="w-full h-full scale-90 object-contain"
                     />
                   </div>
                   <div className="w-full h-[96.5px] border">
                     <img
                       src={product.image}
                       alt=""
-                      className="w-full h-full object-contain"
+                      className="w-full h-full scale-90 object-contain"
                     />
                   </div>
                 </div>
+                {/* large image */}
                 <div className="w-full border">
                   <img
                     src={product.image}
                     alt=""
-                    className="w-full h-full object-contain"
+                    className="w-full h-full scale-75 object-contain"
                   />
                 </div>
               </div>
@@ -107,7 +103,7 @@ const SingleProduct = ({ products }) => {
             {/* product details */}
             <div className="w-full">
               <div className="flex flex-col">
-                <h5 className="font-[700] font-merriweather text-[48px] tracking-[0.5%] leading-[57.6px] text-[#11142d] pb-[24px] ">
+                <h5 className="font-[700] font-merriweather text-[28px] tracking-[0.5%] leading-[57.6px] text-[#11142d] pb-[24px] ">
                   {product.title}
                 </h5>
                 <div className="flex flex-col gap-2">
@@ -125,7 +121,7 @@ const SingleProduct = ({ products }) => {
                     />
                     <span>{product.rating?.count}</span>
                   </p>
-                  <p className="text-[var(--color-50)] font-[700] text-[39px] tracking-[0.5%] leading-[46.8px] font-merriweather flex py-[40px]">
+                  <p className="text-[var(--color-50)] font-[700] text-[24px] tracking-[0.5%] leading-[46.8px] font-merriweather flex py-[40px]">
                     ${product.price}
                     <span></span>
                   </p>
