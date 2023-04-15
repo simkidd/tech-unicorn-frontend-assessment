@@ -28,7 +28,7 @@ const Testimonials = () => {
                 <SwiperSlide key={i}>
                   <div className="bg-[var(--color-10)] flex flex-col relative rounded-[8px] h-[312px] items-center box-border px-[20px]">
                     <div className="bg-[var(--placeholder)] h-[88px] w-[88px] rounded-[50%] absolute top-[-44px]"></div>
-                    <p className="text-[16px] text-center md:w-[566px] mt-[88px] mb-[46px] font-dmsans font-[400] tracking-[0.5%] leading-[20px] text-[#515151]">{item.text}</p>
+                    <p className="text-[16px] text-center md:w-[566px] mt-[75px] mb-[46px] font-dmsans font-[400] tracking-[0.5%] leading-[20px] text-[#515151]">{item.text}</p>
 
                     <h5 className="text-[24px] font-[700] font-merriweather text-[#11142d] tracking-[0.5%] leading-[20px] mb-[8px]">{item.author}</h5>
                     <p className="text-[16px] font-dmsans font-[400] tracking-[0.5%] text-[#515151] ">{item.role}</p>
