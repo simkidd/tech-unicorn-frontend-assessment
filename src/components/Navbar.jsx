@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { NavLink, Link } from "react-router-dom";
 import { BiPhoneCall } from "react-icons/bi";
 import {
@@ -12,12 +12,16 @@ import {
 import { AiOutlineHeart } from "react-icons/ai";
 import { FaBars, FaTimes } from "react-icons/fa";
 import Logo from "../assets/Group.png";
+import CartContext from "../contexts/cart/CartContext";
 
 const Navbar = () => {
   const [openMenu, setOpenMenu] = useState(false);
   const handleMenu = () => {
     setOpenMenu(!openMenu);
   };
+
+  // extract items count from cartContext
+  const { cartItems } = useContext(CartContext);
 
   return (
     <>
@@ -71,7 +75,7 @@ const Navbar = () => {
           </ul>
         </div>
       </header>
-      
+
       <nav className="header-bottom bg-white md:px-[104px] px-[1rem] z-20 relative shadow-sm md:h-[109px] h-[69px] ">
         <div className="md:container flex justify-between h-full items-center relative mx-auto">
           {/* menu button */}
@@ -185,11 +189,16 @@ const Navbar = () => {
               </NavLink>
             </li>
             <li className="relative flex items-center justify-center">
-              <NavLink to='cart' className="font-bold text-[#11142D] hover:text-[var(--color-50)]">
+              <NavLink
+                to="cart"
+                className="font-bold text-[#11142D] hover:text-[var(--color-50)]"
+              >
                 <BsCart3 size={24} />
-                <span className="absolute bg-[var(--color-50)] text-white w-[18px] h-[18px] rounded-[50%] flex items-center justify-center top-[-12px] right-[-10px] text-[14px] border-0">
-                  55
-                </span>
+                {cartItems.length > 0 && (
+                  <span className="absolute bg-[var(--color-50)] text-white w-[18px] h-[18px] rounded-[50%] flex items-center justify-center top-[-12px] right-[-10px] text-[14px] border-0">
+                    {cartItems.length}
+                  </span>
+                )}
               </NavLink>
             </li>
             <li className="flex relative items-center justify-center">

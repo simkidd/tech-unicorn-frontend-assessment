@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 import Meta from "../components/Meta";
@@ -8,12 +8,15 @@ import { HiChevronDown } from "react-icons/hi";
 import Testimonials from "../components/Testimonials";
 import Rating from "@mui/material/Rating";
 import RelatedItems from "../components/RelatedItems";
+import CartContext from '../contexts/cart/CartContext';
 
 const SingleProduct = () => {
   const { id } = useParams();
   const [product, setProduct] = useState([]);
   const [relatedProducts, setRelatedProducts] = useState([]);
-
+  const [wishlist, setWishlist] = useState([]);
+  //extract these functions from the CartContext
+  const {addToCart, cartItems, increase, decrease } = useContext(CartContext)
 
   useEffect(() => {
     const getProduct = async () => {
@@ -30,8 +33,7 @@ const SingleProduct = () => {
       try {
         const res = await axios.get("https://fakestoreapi.com/products");
 
-        const filteredProducts = res.data.filter(
-          (p) => p.category === product.category && p.id !== product.id
+        const filteredProducts = res.data.filter((p) => p.category === product.category && p.id !== product.id
         );
 
         setRelatedProducts(filteredProducts.slice(0, 4));
@@ -43,6 +45,11 @@ const SingleProduct = () => {
     getRelatedProducts()
   }, [id, product.category, product.id]);
 
+  
+
+  const addToWishlist = () => {
+    setWishlist([...wishlist, product]);
+  };
   
 
   return (
@@ -168,24 +175,29 @@ const SingleProduct = () => {
                     />
                   </div>
                   <div className="flex items-center w-[110px] h-[33px] justify-evenly">
-                    <button className="flex items-center justify-center rounded text-[16px] font-[400] font-dmsans text-[#11142d] tracking-[0.5%] leading-[20px] w-full h-full bg-transparent border-none cursor-pointer">
+                    <button className="flex items-center justify-center rounded text-[16px] font-[400] font-dmsans text-[#11142d] tracking-[0.5%] leading-[20px] w-full h-full bg-transparent border-none cursor-pointer"
+                    onClick={() => decrease(product)}>
                       -
                     </button>
                     <span className="flex items-center justify-center text-[16px] font-[400] font-dmsans text-[#11142d] tracking-[0.5%] leading-[20px] w-full h-full ">
                       2
                     </span>
-                    <button className="flex items-center justify-center text-[16px] font-[400] font-dmsans text-[#11142d] tracking-[0.5%] leading-[20px] rounded w-full h-full bg-transparent border-none cursor-pointer">
+                    <button className="flex items-center justify-center text-[16px] font-[400] font-dmsans text-[#11142d] tracking-[0.5%] leading-[20px] rounded w-full h-full bg-transparent border-none cursor-pointer"
+                    onClick={() => increase(product)}>
                       +
                     </button>
                   </div>
                 </div>
                 <div className="flex items-center gap-4">
-                  <button className="bg-[var(--color-50)] flex items-center justify-center rounded-[8px] text-white border-[var(--color-50)] border-[2px] w-[171px] h-[56px] text-[16px] cursor-pointer">
-                    Add to cart
+                  <button className="bg-[var(--color-50)] flex items-center justify-center rounded-[8px] text-white border-[var(--color-50)] border-[2px] w-[171px] h-[56px] text-[16px] cursor-pointer"
+                  onClick={()=>addToCart(product)}>
+                    Add to cart ({cartItems.length})
                     <MdAddShoppingCart size={20} className="ml-2" />
                   </button>
-                  <button className="bg-transparent  flex items-center justify-center rounded-[8px] text-[var(--color-50)] !border-[2px] border-[var(--color-50)] w-[56px] h-[56px] cursor-pointer">
+                  <button className="bg-transparent  flex items-center justify-center rounded-[8px] text-[var(--color-50)] !border-[2px] border-[var(--color-50)] w-[56px] h-[56px] cursor-pointer"
+                  onClick={addToWishlist}>
                     <AiOutlineHeart size={20} />
+                    ({wishlist.length})
                   </button>
                 </div>
               </div>

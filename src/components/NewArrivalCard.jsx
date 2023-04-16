@@ -1,10 +1,18 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { AiOutlineHeart } from 'react-icons/ai'
 import { MdAddShoppingCart } from 'react-icons/md'
 import { Link } from 'react-router-dom';
 import Rating from "@mui/material/Rating";
+import CartContext from '../contexts/cart/CartContext';
 
 const NewArrivalCard = ({product}) => {
+  //extract these functions from the CartContext
+  const {addItemToCart, cartItems} = useContext(CartContext)
+
+  // check whether the product is in the cart or not
+  const isInCart =(product)=>{
+    return !!cartItems.find(item=>item.id === product.id)
+  }
   
   return (
     <>
@@ -20,9 +28,9 @@ const NewArrivalCard = ({product}) => {
             <AiOutlineHeart size={24} className="text-[var(--color-50)] items-center" />
           </span>
           <span className="absolute top-[4.5rem] right-[-3rem] group-hover:right-4 duration-300 md:flex items-center justify-center w-[40px] h-[40px] rounded-[50%] bg-white hidden overflow-hidden">
-            <Link className='w-full h-full flex items-center justify-center'>
+            <button className='w-full h-full flex items-center justify-center' onClick={()=>addItemToCart(product)}>
               <MdAddShoppingCart size={24} className="text-[var(--color-50)]" />
-            </Link>
+            </button>
           </span>
         </div>
         {/* image container end */}
@@ -42,10 +50,12 @@ const NewArrivalCard = ({product}) => {
           <p className="text-[24px] font-merriweather font-[700] text-[var(--color-50)] md:pt-[18px] pt-[5px] pb-[10px] tracking-[0.5%] leading-[28.8px]">
             ${product.price}
           </p>
-          <Link className="bg-[var(--color-50)] md:hidden py-1 px-3 flex items-center justify-center rounded-[5px] text-white pb-1 w-full h-[40px] font-dmsans">
+          <button className="bg-[var(--color-50)] md:hidden py-1 px-3 flex items-center justify-center rounded-[5px] text-white pb-1 w-full h-[40px] font-dmsans" 
+          onClick={()=>addItemToCart(product)}
+          >
             Add to cart
             <MdAddShoppingCart size={20} className="ml-2" />
-          </Link>
+          </button>
         </div>
         {/* details end */}
       </div>
