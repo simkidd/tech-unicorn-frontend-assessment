@@ -5,6 +5,7 @@ import CartContext from "../contexts/cart/CartContext";
 import {BsPlus} from 'react-icons/bs'
 import {BiMinus} from 'react-icons/bi'
 import {FaTrash} from 'react-icons/fa'
+import EmptyCart from '../assets/images/empty-cart.jpg'
 
 
 const Cart = () => {
