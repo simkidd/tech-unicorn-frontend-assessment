@@ -6,7 +6,7 @@ import Rating  from '@mui/material/Rating'
 import CartContext from '../contexts/cart/CartContext'
 
 const RelatedItemsCard = ({product}) => {
-  const {addItemToCart, CartItems} = useContext(CartContext)
+  const {addToCart, CartItems} = useContext(CartContext)
 
   return (
     <>
@@ -26,7 +26,7 @@ const RelatedItemsCard = ({product}) => {
           </span>
           <span className="absolute top-[4.5rem] right-[-3rem] group-hover:right-4 duration-300 md:flex items-center justify-center w-[40px] h-[40px] rounded-[50%] bg-white hidden overflow-hidden">
             <button className="w-full h-full flex items-center justify-center"
-            onClick={()=>addItemToCart(product)}>
+            onClick={()=>addToCart(product)}>
               <MdAddShoppingCart size={24} className="text-[var(--color-50)]" />
             </button>
           </span>
@@ -49,7 +49,7 @@ const RelatedItemsCard = ({product}) => {
             ${product.price}
           </p>
           <button className="bg-[var(--color-50)] md:hidden py-1 px-3 flex items-center justify-center rounded-[5px] text-white pb-1 w-full h-[40px] font-dmsans"
-          onClick={()=>addItemToCart(product)}>
+          onClick={()=>addToCart(product)}>
             Add to cart
             <MdAddShoppingCart size={20} className="ml-2" />
           </button>

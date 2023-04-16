@@ -1,57 +1,65 @@
-import { useReducer } from "react";
+import React, { useReducer } from "react";
 import CartContext from "./CartContext";
-import cartReducer from "./CartReducer";
+import CartReducer, { sumItems } from "./CartReducer";
 
+// Get cartItems from local storage or set an empty array if there are no items
+const cartLocalStorage = JSON.parse(localStorage.getItem("cartItems")) || [];
+
+// Set initial state of the cart using items from local storage and sumItems function
+const initialState = {
+  cartItems: cartLocalStorage,
+  ...sumItems(cartLocalStorage),
+  checkout: false,
+};
+
+// Define the CartProvider component that wraps child components in a CartContext provider
 const CartProvider = ({ children }) => {
-  const initialState = {
-    cartItems: [],
-    totalPrice: 0,
-    checkOut: false,
+  // Use the useReducer hook to manage the cart state
+  const [state, dispatch] = useReducer(CartReducer, initialState);
+
+  // Define functions that dispatch different types of actions to the reducer
+  const addToCart = (payload) => {
+    dispatch({ type: "ADD_TO_CART", payload });
   };
 
-  const [state, dispatch] = useReducer(cartReducer, initialState);
-
-  const addItemToCart = (item) => {
-    dispatch({ type: "ADD_ITEM", payload: item });
+  const removeItem = (payload) => {
+    dispatch({ type: "REMOVE_ITEM", payload });
   };
 
-  const removeItemFromCart = (item) => {
-    dispatch({ type: "REMOVE_ITEM", payload: item });
+  const increase = (payload) => {
+    dispatch({ type: "INCREASE_QUANTITY", payload });
+  };
+
+  const decrease = (payload) => {
+    dispatch({ type: "DECREASE_QUANTITY", payload });
   };
 
   const clearCart = () => {
-    dispatch({ type: "CLEAR_CART" });
-  };
-
-  const increaseQuantity = (item) => {
-    dispatch({ type: "INCREASE_QUANTITY", payload: item });
-  };
-
-  const decreaseQuantity = (item) => {
-    dispatch({ type: "DECREASE_QUANTITY", payload: item });
+    dispatch({ type: "CLEAR" });
   };
 
   const handleCheckout = () => {
     dispatch({ type: "CHECKOUT" });
   };
 
-  const cartContextValue = {
-    cartItems: state.cartItems,
-    totalPrice: state.totalPrice,
-    checkOut: state.checkOut,
-    addItemToCart: addItemToCart,
-    removeItemFromCart: removeItemFromCart,
-    clearCart: clearCart,
-    increaseQuantity: increaseQuantity,
-    decreaseQuantity: decreaseQuantity,
-    handleCheckout: handleCheckout,
+  // Define context values that will be passed down to child components
+  const contextValues = {
+    ...state,
+    addToCart,
+    removeItem,
+    increase,
+    decrease,
+    clearCart,
+    handleCheckout,
   };
 
+  // Render the CartContext provider with the defined context values and child components
   return (
-    <CartContext.Provider value={cartContextValue}>
+    <CartContext.Provider value={contextValues}>
       {children}
     </CartContext.Provider>
   );
 };
 
+// Export the CartProvider component as default
 export default CartProvider;

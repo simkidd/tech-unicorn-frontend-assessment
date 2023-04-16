@@ -34,7 +34,6 @@ const App = () => {
   }, []);
 
   return (
-    <>
       <Router>
         <Routes>
           <Route path="/" element={<Layout />}>
@@ -52,7 +51,6 @@ const App = () => {
           </Route>
         </Routes>
       </Router>
-    </>
   );
 };
 

@@ -2,16 +2,24 @@ import React, { useContext } from "react";
 import Meta from "../components/Meta";
 import { Link } from "react-router-dom";
 import CartContext from "../contexts/cart/CartContext";
-import {BsPlus} from 'react-icons/bs'
-import {BiMinus} from 'react-icons/bi'
-import {FaTrash} from 'react-icons/fa'
-import EmptyCart from '../assets/images/empty-cart.jpg'
-
+import { BsPlus } from "react-icons/bs";
+import { BiMinus } from "react-icons/bi";
+import { FaTrash } from "react-icons/fa";
+import EmptyCartImage from "../assets/images/empty-cart.jpg";
 
 const Cart = () => {
   //extract these functions from the CartContext
-  const { cartItems, removeItemFromCart, increaseQuantity, decreaseQuantity, clearCart } =
-    useContext(CartContext);
+  const {
+    cartItems,
+    totalItems,
+    totalAmount,
+    removeItem,
+    increase,
+    decrease,
+    clearCart,
+    handleCheckout,
+    checkout,
+  } = useContext(CartContext);
 
   return (
     <>
@@ -46,7 +54,7 @@ const Cart = () => {
           {cartItems.length === 0 ? (
             <div className="w-full h-[400px]">
               <img
-                src={EmptyCart}
+                src={EmptyCartImage}
                 alt=""
                 className="object-contain w-full h-full"
               />
@@ -74,19 +82,18 @@ const Cart = () => {
                           <div className="flex flex-col">
                             <div>{product.title}</div>
                             <div>{product.price}</div>
-                            {/* <div>Qty: {product.quantity}</div> */}
                             <div>Qty: {product.quantity * product.price}</div>
 
                             <div className="flex gap-4">
-                              <button onClick={() => decreaseQuantity(product)}>
-                                <BiMinus/>
+                              <button onClick={() => decrease(product)}>
+                                <BiMinus />
                               </button>
                               <p>{product.quantity}</p>
-                              <button onClick={() => increaseQuantity(product)}>
-                                <BsPlus/>
+                              <button onClick={() => increase(product)}>
+                                <BsPlus />
                               </button>
-                              <button onClick={() => removeItemFromCart(product)}>
-                                <FaTrash/>
+                              <button onClick={() => removeItem(product)}>
+                                <FaTrash />
                               </button>
                             </div>
                           </div>
@@ -130,10 +137,11 @@ const Cart = () => {
                     <p className="font-[700] text-[16px] leading-[19.2px] tracking-[0.5%] text-[#11142d] font-merriweather flex items-center justify-between ">
                       TOTAL
                       <span className="text-[16px] font-[700] leading-[20px] tracking-[0.5%] font-dmsans text-[#11142d] ">
-                        $350
+                      ${totalAmount}
                       </span>
                     </p>
-                    <button className="w-full h-[56px] bg-[var(--color-50)] rounded-[8px] text-white mt-[46px]">
+                    <button className="w-full h-[56px] bg-[var(--color-50)] rounded-[8px] text-white mt-[46px]"
+                    onClick={handleCheckout}>
                       Checkout
                     </button>
                   </div>

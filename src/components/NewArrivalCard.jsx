@@ -7,12 +7,12 @@ import CartContext from '../contexts/cart/CartContext';
 
 const NewArrivalCard = ({product}) => {
   //extract these functions from the CartContext
-  const {addItemToCart, cartItems} = useContext(CartContext)
+  const {addToCart, cartItems} = useContext(CartContext)
 
   // check whether the product is in the cart or not
-  const isInCart =(product)=>{
-    return !!cartItems.find(item=>item.id === product.id)
-  }
+  // const isInCart =(product)=>{
+  //   return !!cartItems.find(item=>item.id === product.id)
+  // }
   
   return (
     <>
@@ -28,7 +28,7 @@ const NewArrivalCard = ({product}) => {
             <AiOutlineHeart size={24} className="text-[var(--color-50)] items-center" />
           </span>
           <span className="absolute top-[4.5rem] right-[-3rem] group-hover:right-4 duration-300 md:flex items-center justify-center w-[40px] h-[40px] rounded-[50%] bg-white hidden overflow-hidden">
-            <button className='w-full h-full flex items-center justify-center' onClick={()=>addItemToCart(product)}>
+            <button className='w-full h-full flex items-center justify-center' onClick={()=>addToCart(product)}>
               <MdAddShoppingCart size={24} className="text-[var(--color-50)]" />
             </button>
           </span>
@@ -51,7 +51,7 @@ const NewArrivalCard = ({product}) => {
             ${product.price}
           </p>
           <button className="bg-[var(--color-50)] md:hidden py-1 px-3 flex items-center justify-center rounded-[5px] text-white pb-1 w-full h-[40px] font-dmsans" 
-          onClick={()=>addItemToCart(product)}
+          onClick={()=>addToCart(product)}
           >
             Add to cart
             <MdAddShoppingCart size={20} className="ml-2" />
