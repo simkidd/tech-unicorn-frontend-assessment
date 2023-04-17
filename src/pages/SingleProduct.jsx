@@ -16,7 +16,8 @@ const SingleProduct = () => {
   const [relatedProducts, setRelatedProducts] = useState([]);
   const [wishlist, setWishlist] = useState([]);
   //extract these functions from the CartContext
-  const {addToCart, cartItems, increase, decrease } = useContext(CartContext)
+  const {addToCart, cartItems} = useContext(CartContext)
+  const [quantity, setQuantity] = useState(1);
 
   useEffect(() => {
     const getProduct = async () => {
@@ -51,6 +52,15 @@ const SingleProduct = () => {
     setWishlist([...wishlist, product]);
   };
   
+  const handleIncrease = () => {
+    setQuantity(quantity + 1);
+  };
+
+  const handleDecrease = () => {
+    if (quantity > 1) {
+      setQuantity(quantity - 1);
+    }
+  };
 
   return (
     <>
@@ -176,14 +186,14 @@ const SingleProduct = () => {
                   </div>
                   <div className="flex items-center w-[110px] h-[33px] justify-evenly">
                     <button className="flex items-center justify-center rounded text-[16px] font-[400] font-dmsans text-[#11142d] tracking-[0.5%] leading-[20px] w-full h-full bg-transparent border-none cursor-pointer"
-                    onClick={() => decrease(product)}>
+                    onClick={handleDecrease}>
                       -
                     </button>
                     <span className="flex items-center justify-center text-[16px] font-[400] font-dmsans text-[#11142d] tracking-[0.5%] leading-[20px] w-full h-full ">
-                      2
+                      {quantity}
                     </span>
                     <button className="flex items-center justify-center text-[16px] font-[400] font-dmsans text-[#11142d] tracking-[0.5%] leading-[20px] rounded w-full h-full bg-transparent border-none cursor-pointer"
-                    onClick={() => increase(product)}>
+                    onClick={handleIncrease}>
                       +
                     </button>
                   </div>

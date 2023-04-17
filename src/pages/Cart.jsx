@@ -11,15 +11,16 @@ const Cart = () => {
   //extract these functions from the CartContext
   const {
     cartItems,
-    totalItems,
-    totalAmount,
     removeItem,
     increase,
     decrease,
     clearCart,
-    handleCheckout,
-    checkout,
   } = useContext(CartContext);
+
+  // Calculate total amount of all items in cart
+  const totalAmount = cartItems.reduce((acc, item) => {
+    return acc + item.price * item.quantity;
+  }, 0);
 
   return (
     <>
@@ -49,8 +50,9 @@ const Cart = () => {
         {/* cart */}
         <div className="md:px-[104px] px-[20px] md:py-[160px] py-[80px]">
           <h2 className="md:text-[38px] text-[28px] font-[700] font-merriweather leading-[57.6px] tracking-[0.5%] ">
-            Cart <span>({cartItems.length})</span>
+            Cart <span>({cartItems.length})</span> 
           </h2>
+          <button onClick={clearCart}>Clear Cart</button>
           {cartItems.length === 0 ? (
             <div className="w-full h-[400px]">
               <img
@@ -65,13 +67,13 @@ const Cart = () => {
               <div className="w-full">
                 {/* cart item list */}
                 <>
-                  {cartItems.map((product) => (
+                  {cartItems.map((item) => (
                     <div className="w-full h-[150px] overflow-hidden">
                       <div className="flex w-full">
                         <div>
                           <div className="h-[150px] w-[150px] box-border ">
                             <img
-                              src={product.image}
+                              src={item.image}
                               alt=""
                               className="h-full w-full object-contain"
                             />
@@ -80,19 +82,19 @@ const Cart = () => {
 
                         <div className="w-full">
                           <div className="flex flex-col">
-                            <div>{product.title}</div>
-                            <div>{product.price}</div>
-                            <div>Qty: {product.quantity * product.price}</div>
+                            <div>{item.title}</div>
+                            <div>{item.price}</div>
+                            <div>${(item.price * item.quantity).toFixed(2)}</div>
 
                             <div className="flex gap-4">
-                              <button onClick={() => decrease(product)}>
+                              <button onClick={() => decrease(item)}>
                                 <BiMinus />
                               </button>
-                              <p>{product.quantity}</p>
-                              <button onClick={() => increase(product)}>
+                              <p>{item.quantity}</p>
+                              <button onClick={() => increase(item)}>
                                 <BsPlus />
                               </button>
-                              <button onClick={() => removeItem(product)}>
+                              <button onClick={() => removeItem(item)}>
                                 <FaTrash />
                               </button>
                             </div>
@@ -125,7 +127,7 @@ const Cart = () => {
                     <p className="font-[700] text-[16px] leading-[19.2px] tracking-[0.5%] text-[#11142d] font-merriweather flex items-center justify-between py-[24px]">
                       Subtotal
                       <span className="text-[16px] font-[400] leading-[20px] tracking-[0.5%] font-dmsans text-[#515151] ">
-                        $150
+                      ${totalAmount.toFixed(2)}
                       </span>
                     </p>
                     <p className="font-[700] text-[16px] leading-[19.2px] tracking-[0.5%] text-[#11142d] font-merriweather flex items-center justify-between pb-[24px]">
@@ -137,11 +139,12 @@ const Cart = () => {
                     <p className="font-[700] text-[16px] leading-[19.2px] tracking-[0.5%] text-[#11142d] font-merriweather flex items-center justify-between ">
                       TOTAL
                       <span className="text-[16px] font-[700] leading-[20px] tracking-[0.5%] font-dmsans text-[#11142d] ">
-                      ${totalAmount}
+                      ${totalAmount.toFixed(2)}
                       </span>
+                      
                     </p>
                     <button className="w-full h-[56px] bg-[var(--color-50)] rounded-[8px] text-white mt-[46px]"
-                    onClick={handleCheckout}>
+                    >
                       Checkout
                     </button>
                   </div>

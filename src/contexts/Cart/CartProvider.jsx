@@ -1,65 +1,64 @@
-import React, { useReducer } from "react";
+import { useReducer, useEffect } from "react";
 import CartContext from "./CartContext";
-import CartReducer, { sumItems } from "./CartReducer";
+import CartReducer from "./CartReducer";
 
-// Get cartItems from local storage or set an empty array if there are no items
-const cartLocalStorage = JSON.parse(localStorage.getItem("cartItems")) || [];
-
-// Set initial state of the cart using items from local storage and sumItems function
 const initialState = {
-  cartItems: cartLocalStorage,
-  ...sumItems(cartLocalStorage),
-  checkout: false,
+  cartItems: [],
+  totalAmount: 0,
 };
 
-// Define the CartProvider component that wraps child components in a CartContext provider
 const CartProvider = ({ children }) => {
-  // Use the useReducer hook to manage the cart state
   const [state, dispatch] = useReducer(CartReducer, initialState);
 
-  // Define functions that dispatch different types of actions to the reducer
-  const addToCart = (payload) => {
-    dispatch({ type: "ADD_TO_CART", payload });
+  useEffect(() => {
+    // Read stored cart items from localStorage
+    const storedCartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+    dispatch({ type: "SET_CART_ITEMS", payload: storedCartItems });
+  }, []);
+
+  useEffect(() => {
+    // Store cart items in localStorage
+    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+  }, [cartItems]);
+
+  function addToCart(item) {
+    dispatch({ type: "ADD", payload: item });
+  }
+
+  const increase = (item) => {
+    dispatch({ type: "INCREASE", payload: item });
   };
 
-  const removeItem = (payload) => {
-    dispatch({ type: "REMOVE_ITEM", payload });
+  const decrease = (item) => {
+    if (item.quantity === 1) {
+      dispatch({ type: "REMOVE", payload: item });
+    } else {
+      dispatch({ type: "DECREASE", payload: item });
+    }
   };
 
-  const increase = (payload) => {
-    dispatch({ type: "INCREASE_QUANTITY", payload });
-  };
-
-  const decrease = (payload) => {
-    dispatch({ type: "DECREASE_QUANTITY", payload });
+  const removeItem = (item) => {
+    dispatch({ type: "REMOVE", payload: item });
   };
 
   const clearCart = () => {
     dispatch({ type: "CLEAR" });
   };
 
-  const handleCheckout = () => {
-    dispatch({ type: "CHECKOUT" });
-  };
-
-  // Define context values that will be passed down to child components
-  const contextValues = {
-    ...state,
-    addToCart,
-    removeItem,
-    increase,
-    decrease,
-    clearCart,
-    handleCheckout,
-  };
-
-  // Render the CartContext provider with the defined context values and child components
   return (
-    <CartContext.Provider value={contextValues}>
+    <CartContext.Provider
+      value={{
+        cartItems: state.cartItems,
+        totalAmount: state.totalAmount,
+        addToCart,
+        increase,
+        decrease,
+        removeItem,
+        clearCart,
+      }}
+    >
       {children}
     </CartContext.Provider>
   );
 };
-
-// Export the CartProvider component as default
 export default CartProvider;
