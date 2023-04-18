@@ -51,7 +51,7 @@ const NewArrivalCard = ({product}) => {
             ${product.price}
           </p>
           <button className="bg-[var(--color-50)] md:hidden py-1 px-3 flex items-center justify-center rounded-[5px] text-white pb-1 w-full h-[40px] font-dmsans" 
-          onClick={()=>addToCart(product)}
+          onClick={()=>addToCart(product, product.id)}
           >
             Add to cart
             <MdAddShoppingCart size={20} className="ml-2" />

@@ -25,7 +25,7 @@ const BestsellerCard = ({product}) => {
           </span>
           <span className="absolute top-[4.5rem] right-[-3rem] group-hover:right-4 duration-300 md:flex items-center justify-center w-[40px] h-[40px] rounded-[50%] bg-white hidden overflow-hidden">
             <button className="w-full h-full flex items-center justify-center"
-            onClick={()=>addToCart(product)}>
+            onClick={()=>addToCart(product, product.id)}>
               <MdAddShoppingCart size={24} className="text-[var(--color-50)]" />
             </button>
           </span>
@@ -48,7 +48,7 @@ const BestsellerCard = ({product}) => {
             ${product.price}
           </p>
           <button className="bg-[var(--color-50)] md:hidden py-1 px-3 flex items-center justify-center rounded-[5px] text-white pb-1 w-full h-[40px] font-dmsans"
-          onClick={()=>addToCart(product)}>
+          onClick={()=>addToCart(product, product.id)}>
             Add to cart
             <MdAddShoppingCart size={20} className="ml-2" />
           </button>

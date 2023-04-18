@@ -1,4 +1,4 @@
-import React  from "react";
+import React, { useContext } from "react";
 import Testimonials from "../components/Testimonials";
 import { MdArrowForwardIos } from "react-icons/md";
 import { HiArrowRight } from "react-icons/hi";
@@ -7,9 +7,11 @@ import Meta from "../components/Meta";
 import Bestseller from "../components/Bestseller";
 import Hero from "../components/Hero";
 import MarqueeSlide from "../components/Marquee";
+import { ProductContext } from "../contexts/ProductProvider";
 
-const Home = ({products}) => {
-  
+const Home = () => {
+  // get products from context
+  const { products } = useContext(ProductContext);
 
   return (
     <div className="w-full bg-white">

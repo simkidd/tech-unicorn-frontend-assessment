@@ -8,7 +8,7 @@ import { HiChevronDown } from "react-icons/hi";
 import Testimonials from "../components/Testimonials";
 import Rating from "@mui/material/Rating";
 import RelatedItems from "../components/RelatedItems";
-import { CartContext } from "../contexts/CartProvider"; 
+import { CartContext } from "../contexts/CartProvider";
 
 const SingleProduct = () => {
   const { id } = useParams();
@@ -16,7 +16,7 @@ const SingleProduct = () => {
   const [relatedProducts, setRelatedProducts] = useState([]);
   const [wishlist, setWishlist] = useState([]);
   //extract these functions from the CartContext
-  const {addToCart} = useContext(CartContext)
+  const { addToCart } = useContext(CartContext);
   const [quantity, setQuantity] = useState(1);
 
   useEffect(() => {
@@ -34,7 +34,8 @@ const SingleProduct = () => {
       try {
         const res = await axios.get("https://fakestoreapi.com/products");
 
-        const filteredProducts = res.data.filter((p) => p.category === product.category && p.id !== product.id
+        const filteredProducts = res.data.filter(
+          (p) => p.category === product.category && p.id !== product.id
         );
 
         setRelatedProducts(filteredProducts.slice(0, 4));
@@ -43,32 +44,34 @@ const SingleProduct = () => {
       }
     };
     getProduct();
-    getRelatedProducts()
+    getRelatedProducts();
   }, [id, product.category, product.id]);
-
-  
 
   const addToWishlist = () => {
     setWishlist([...wishlist, product]);
   };
-  
-  const handleIncrease = () => {
-    setQuantity(quantity + 1);
+
+  const handleAddToCart = () => {
+    addToCart(product, product.id, quantity);
   };
 
-  const handleDecrease = () => {
+  const handleDecrement = () => {
     if (quantity > 1) {
       setQuantity(quantity - 1);
     }
   };
 
+  const handleIncrement = () => {
+    setQuantity(quantity + 1);
+  };
+
   //if product is not found
-  if (!product){
-    return(
+  if (!product) {
+    return (
       <section className="h-screen flex justify-center items-center text-3xl">
         Loading...
       </section>
-    )
+    );
   }
 
   return (
@@ -194,29 +197,41 @@ const SingleProduct = () => {
                     />
                   </div>
                   <div className="flex items-center w-[110px] h-[33px] justify-evenly">
-                    <button className="flex items-center justify-center rounded text-[16px] font-[400] font-dmsans text-[#11142d] tracking-[0.5%] leading-[20px] w-full h-full bg-transparent border-none cursor-pointer"
-                    onClick={handleDecrease}>
+                    <button
+                      className="flex items-center justify-center rounded text-[16px] font-[400] font-dmsans text-[#11142d] tracking-[0.5%] leading-[20px] w-full h-full bg-transparent border-none cursor-pointer shadow-md"
+                      onClick={handleDecrement}
+                    >
                       -
                     </button>
-                    <span className="flex items-center justify-center text-[16px] font-[400] font-dmsans text-[#11142d] tracking-[0.5%] leading-[20px] w-full h-full ">
-                      {quantity}
-                    </span>
-                    <button className="flex items-center justify-center text-[16px] font-[400] font-dmsans text-[#11142d] tracking-[0.5%] leading-[20px] rounded w-full h-full bg-transparent border-none cursor-pointer"
-                    onClick={handleIncrease}>
+                    {/* <span className="flex items-center justify-center text-[16px] font-[400] font-dmsans text-[#11142d] tracking-[0.5%] leading-[20px] w-full h-full ">
+                    </span> */}
+                      <input
+                      className="w-[36.67px] text-center"
+                        type="text"
+                        value={quantity}
+                        onChange={() => {}}
+                      />
+                    <button
+                      className="flex items-center justify-center text-[16px] font-[400] font-dmsans text-[#11142d] tracking-[0.5%] leading-[20px] rounded w-full h-full bg-transparent border-none cursor-pointer shadow-md"
+                      onClick={handleIncrement}
+                    >
                       +
                     </button>
                   </div>
                 </div>
                 <div className="flex items-center gap-4">
-                  <button className="bg-[var(--color-50)] flex items-center justify-center rounded-[8px] text-white border-[var(--color-50)] border-[2px] w-[171px] h-[56px] text-[16px] cursor-pointer"
-                  onClick={()=>addToCart(product, id)}>
+                  <button
+                    className="bg-[var(--color-50)] flex items-center justify-center rounded-[8px] text-white border-[var(--color-50)] border-[2px] w-[171px] h-[56px] text-[16px] cursor-pointer"
+                    onClick={handleAddToCart}
+                  >
                     Add to cart
                     <MdAddShoppingCart size={20} className="ml-2" />
                   </button>
-                  <button className="bg-transparent  flex items-center justify-center rounded-[8px] text-[var(--color-50)] !border-[2px] border-[var(--color-50)] w-[56px] h-[56px] cursor-pointer"
-                  onClick={addToWishlist}>
-                    <AiOutlineHeart size={20} />
-                    ({wishlist.length})
+                  <button
+                    className="bg-transparent  flex items-center justify-center rounded-[8px] text-[var(--color-50)] !border-[2px] border-[var(--color-50)] w-[56px] h-[56px] cursor-pointer"
+                    onClick={addToWishlist}
+                  >
+                    <AiOutlineHeart size={20} />({wishlist.length})
                   </button>
                 </div>
               </div>
