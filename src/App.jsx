@@ -19,15 +19,11 @@ const App = () => {
 
   useEffect(() => {
     const fetchProducts = async () => {
-      // setLoading(true);
       try {
         const res = await axios.get("https://fakestoreapi.com/products");
         setProducts(res.data);
-        // setLoading(false);
       } catch (err) {
         console.log(err);
-        // setError("Error fetching data!");
-        // setLoading(false);
       }
     };
     fetchProducts();
@@ -38,7 +34,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Home products={products} />} />
-            <Route path="shop" element={<Shop />} />
+            {/* <Route path="shop" element={<Shop />} /> */}
             <Route
               path="product/:id"
               element={<SingleProduct products={products} />}

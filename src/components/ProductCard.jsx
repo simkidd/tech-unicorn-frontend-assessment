@@ -3,7 +3,7 @@ import { AiOutlineHeart } from "react-icons/ai";
 import { MdAddShoppingCart } from "react-icons/md";
 import { Link } from "react-router-dom";
 import Rating from "@mui/material/Rating";
-import CartContext from '../contexts/cart/CartContext';
+import { CartContext } from "../contexts/CartProvider"; 
 
 export const ProductListCard = ({ product }) => {
   //extract these functions from the CartContext

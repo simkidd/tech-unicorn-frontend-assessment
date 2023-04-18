@@ -1,27 +1,13 @@
 import React, { useContext } from "react";
 import Meta from "../components/Meta";
 import { Link } from "react-router-dom";
-import CartContext from "../contexts/cart/CartContext";
-import { BsPlus } from "react-icons/bs";
-import { BiMinus } from "react-icons/bi";
-import { FaTrash } from "react-icons/fa";
+import { CartContext } from "../contexts/CartProvider";
 import EmptyCartImage from "../assets/images/empty-cart.jpg";
+import CartItem from "../components/CartItem";
 
 const Cart = () => {
   //extract these functions from the CartContext
-  const {
-    cartItems,
-    removeItem,
-    increase,
-    decrease,
-    clearCart,
-  } = useContext(CartContext);
-
-  // Calculate total amount of all items in cart
-  const totalAmount = cartItems.reduce((acc, item) => {
-    return acc + item.price * item.quantity;
-  }, 0);
-  
+  const { cart, total, clearCart } = useContext(CartContext);
 
   return (
     <>
@@ -48,63 +34,32 @@ const Cart = () => {
           </div>
         </div>
         {/* breadcrumb ends here */}
-        {/* cart */}
-        <div className="md:px-[104px] px-[20px] md:py-[160px] py-[80px]">
-          <h2 className="md:text-[38px] text-[28px] font-[700] font-merriweather leading-[57.6px] tracking-[0.5%] ">
-            Cart <span>({cartItems.length})</span> 
-          </h2>
-          <button onClick={clearCart}>Clear Cart</button>
-          {cartItems.length === 0 ? (
-            <div className="w-full h-[400px]">
+
+        {cart.length === 0 ? (
+          <div className="w-full py-[80px] md:py-[160px] h-screen flex items-center justify-center">
+            <div className="flex flex-col">
               <img
                 src={EmptyCartImage}
-                alt=""
-                className="object-contain w-full h-full"
+                alt="empty cart"
+                className="w-[400px]"
               />
               <h1 className="text-center font-[700] text-5xl">Cart is empty</h1>
             </div>
-          ) : (
+          </div>
+        ) : (
+          // {/* cart */}
+          <div className="md:px-[104px] px-[20px] md:py-[160px] py-[80px]">
+            <h2 className="md:text-[38px] text-[28px] font-[700] font-merriweather leading-[57.6px] tracking-[0.5%] ">
+              Cart <span>({cart.length})</span>
+            </h2>
+            <button onClick={clearCart}>Clear Cart</button>
             <div className="flex md:flex-row flex-col">
               <div className="w-full">
                 {/* cart item list */}
-                <>
-                  {cartItems.map((item) => (
-                    <div className="w-full h-[150px] overflow-hidden">
-                      <div className="flex w-full">
-                        <div>
-                          <div className="h-[150px] w-[150px] box-border ">
-                            <img
-                              src={item.image}
-                              alt=""
-                              className="h-full w-full object-contain"
-                            />
-                          </div>
-                        </div>
-
-                        <div className="w-full">
-                          <div className="flex flex-col">
-                            <div>{item.title}</div>
-                            <div>{item.price}</div>
-                            <div>${(item.price * item.quantity).toFixed(2)}</div>
-
-                            <div className="flex gap-4">
-                              <button onClick={() => decrease(item)}>
-                                <BiMinus />
-                              </button>
-                              <p>{item.quantity}</p>
-                              <button onClick={() => increase(item)}>
-                                <BsPlus />
-                              </button>
-                              <button onClick={() => removeItem(item)}>
-                                <FaTrash />
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </>
+                {cart.map((item) => (
+                  <CartItem key={item.id} item={item} />
+                ))}
+                {/* cart item list end */}
               </div>
               {/* coupon, total and checkout */}
               <div>
@@ -128,7 +83,7 @@ const Cart = () => {
                     <p className="font-[700] text-[16px] leading-[19.2px] tracking-[0.5%] text-[#11142d] font-merriweather flex items-center justify-between py-[24px]">
                       Subtotal
                       <span className="text-[16px] font-[400] leading-[20px] tracking-[0.5%] font-dmsans text-[#515151] ">
-                      ${totalAmount.toFixed(2)}
+                        ${parseFloat(total).toFixed(2)}
                       </span>
                     </p>
                     <p className="font-[700] text-[16px] leading-[19.2px] tracking-[0.5%] text-[#11142d] font-merriweather flex items-center justify-between pb-[24px]">
@@ -140,20 +95,18 @@ const Cart = () => {
                     <p className="font-[700] text-[16px] leading-[19.2px] tracking-[0.5%] text-[#11142d] font-merriweather flex items-center justify-between ">
                       TOTAL
                       <span className="text-[16px] font-[700] leading-[20px] tracking-[0.5%] font-dmsans text-[#11142d] ">
-                      ${totalAmount.toFixed(2)}
+                        ${parseFloat(total).toFixed(2)}
                       </span>
-                      
                     </p>
-                    <button className="w-full h-[56px] bg-[var(--color-50)] rounded-[8px] text-white mt-[46px]"
-                    >
+                    <button className="w-full h-[56px] bg-[var(--color-50)] rounded-[8px] text-white mt-[46px]">
                       Checkout
                     </button>
                   </div>
                 </div>
               </div>
             </div>
-          )}
-        </div>
+          </div>
+        )}
       </div>
     </>
   );

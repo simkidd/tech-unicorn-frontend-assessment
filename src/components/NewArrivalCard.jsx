@@ -3,15 +3,15 @@ import { AiOutlineHeart } from 'react-icons/ai'
 import { MdAddShoppingCart } from 'react-icons/md'
 import { Link } from 'react-router-dom';
 import Rating from "@mui/material/Rating";
-import CartContext from '../contexts/cart/CartContext';
+import { CartContext } from '../contexts/CartProvider';
 
 const NewArrivalCard = ({product}) => {
   //extract these functions from the CartContext
-  const {addToCart, cartItems} = useContext(CartContext)
+  const {addToCart, cart} = useContext(CartContext)
 
   // check whether the product is in the cart or not
   // const isInCart =(product)=>{
-  //   return !!cartItems.find(item=>item.id === product.id)
+  //   return !!cart.find(item=>item.id === product.id)
   // }
   
   return (
@@ -28,7 +28,7 @@ const NewArrivalCard = ({product}) => {
             <AiOutlineHeart size={24} className="text-[var(--color-50)] items-center" />
           </span>
           <span className="absolute top-[4.5rem] right-[-3rem] group-hover:right-4 duration-300 md:flex items-center justify-center w-[40px] h-[40px] rounded-[50%] bg-white hidden overflow-hidden">
-            <button className='w-full h-full flex items-center justify-center' onClick={()=>addToCart(product)}>
+            <button className='w-full h-full flex items-center justify-center' onClick={()=>addToCart(product, product.id)}>
               <MdAddShoppingCart size={24} className="text-[var(--color-50)]" />
             </button>
           </span>

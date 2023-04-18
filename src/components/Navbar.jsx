@@ -12,7 +12,7 @@ import {
 import { AiOutlineHeart } from "react-icons/ai";
 import { FaBars, FaTimes } from "react-icons/fa";
 import Logo from "../assets/Group.png";
-import CartContext from "../contexts/cart/CartContext";
+import { CartContext } from "../contexts/CartProvider"; 
 
 const Navbar = () => {
   const [openMenu, setOpenMenu] = useState(false);
@@ -21,7 +21,7 @@ const Navbar = () => {
   };
 
   // extract items count from cartContext
-  const { cartItems } = useContext(CartContext);
+  const { cart, itemCount } = useContext(CartContext);
 
   return (
     <>
@@ -194,9 +194,9 @@ const Navbar = () => {
                 className="font-bold text-[#11142D] hover:text-[var(--color-50)]"
               >
                 <BsCart3 size={24} />
-                {cartItems.length > 0 && (
+                {cart.length > 0 && (
                   <span className="absolute bg-[var(--color-50)] text-white w-[18px] h-[18px] rounded-[50%] flex items-center justify-center top-[-12px] right-[-10px] text-[14px] border-0">
-                    {cartItems.length}
+                    {cart.length}
                   </span>
                 )}
               </NavLink>

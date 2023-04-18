@@ -8,7 +8,7 @@ import { HiChevronDown } from "react-icons/hi";
 import Testimonials from "../components/Testimonials";
 import Rating from "@mui/material/Rating";
 import RelatedItems from "../components/RelatedItems";
-import CartContext from '../contexts/cart/CartContext';
+import { CartContext } from "../contexts/CartProvider"; 
 
 const SingleProduct = () => {
   const { id } = useParams();
@@ -16,7 +16,7 @@ const SingleProduct = () => {
   const [relatedProducts, setRelatedProducts] = useState([]);
   const [wishlist, setWishlist] = useState([]);
   //extract these functions from the CartContext
-  const {addToCart, cartItems} = useContext(CartContext)
+  const {addToCart} = useContext(CartContext)
   const [quantity, setQuantity] = useState(1);
 
   useEffect(() => {
@@ -61,6 +61,15 @@ const SingleProduct = () => {
       setQuantity(quantity - 1);
     }
   };
+
+  //if product is not found
+  if (!product){
+    return(
+      <section className="h-screen flex justify-center items-center text-3xl">
+        Loading...
+      </section>
+    )
+  }
 
   return (
     <>
@@ -200,8 +209,8 @@ const SingleProduct = () => {
                 </div>
                 <div className="flex items-center gap-4">
                   <button className="bg-[var(--color-50)] flex items-center justify-center rounded-[8px] text-white border-[var(--color-50)] border-[2px] w-[171px] h-[56px] text-[16px] cursor-pointer"
-                  onClick={()=>addToCart(product)}>
-                    Add to cart ({cartItems.length})
+                  onClick={()=>addToCart(product, id)}>
+                    Add to cart
                     <MdAddShoppingCart size={20} className="ml-2" />
                   </button>
                   <button className="bg-transparent  flex items-center justify-center rounded-[8px] text-[var(--color-50)] !border-[2px] border-[var(--color-50)] w-[56px] h-[56px] cursor-pointer"
